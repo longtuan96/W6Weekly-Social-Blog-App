@@ -2,8 +2,8 @@
 
 ## Must be finished within Friday
 
-- [ ] get all posts, have order function for the posts
-- [ ] get detail blog.
+- [x] get all posts, have order function for the posts
+- [x] get detail blog.
       **_Hue and Josh_**
 - [x] Log in function and let the user stay login after the page reloaded
 - [x] register function and upload img
