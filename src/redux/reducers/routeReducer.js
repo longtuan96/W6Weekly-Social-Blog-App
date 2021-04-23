@@ -11,6 +11,8 @@ const routeReducer = (state = initialState, action) => {
     case "REMOVE_REDIRECT_TO":
       state.redirectTo = null;
       break;
+    default:
+      break;
   }
   return { ...state };
 };

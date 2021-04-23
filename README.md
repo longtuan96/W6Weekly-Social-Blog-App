@@ -5,8 +5,8 @@
 - [ ] get all posts, have order function for the posts
 - [ ] get detail blog.
       **_Hue and Josh_**
-- [ ] Log in function and let the user stay login after the page reloaded
-- [ ] register function and upload img
+- [x] Log in function and let the user stay login after the page reloaded
+- [x] register function and upload img
       **_Tuan and Dinh_**
 
   _After simple registering and login function finished_
