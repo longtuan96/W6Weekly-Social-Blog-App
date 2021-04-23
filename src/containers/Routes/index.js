@@ -8,7 +8,6 @@ const Routes = () => {
     <Switch>
       <ProtectedRoute path="/admin" component={AdminLayout} />
       <Route path="/" component={PublicLayout} />
-      <Route />
     </Switch>
   );
 };

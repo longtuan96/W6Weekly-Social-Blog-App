@@ -1,0 +1,2 @@
+export const REDIRECT_TO = "REDIRECT_TO";
+export const REMOVE_REDIRECT_TO = "REMOVE_REDIRECT_TO";
