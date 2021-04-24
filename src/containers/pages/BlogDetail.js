@@ -1,39 +1,29 @@
 import React from "react";
-import api from "../../redux/api";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import PublicPagination from "../../components/PublicPagination";
+import { useDispatch, useSelector } from "react-redux";
+import { blogActions } from "../../redux/actions/blog.action";
+import { useParams } from "react-router-dom";
 
 const BlogDetail = () => {
-  const [singleBlog, setSingleBlog] = useState([]);
   const { blog_id } = useParams();
-  const getSingleBlog = async () => {
-    try {
-      let url = `blogs/${blog_id}`;
-      let res = await api.get(url);
-      console.log("what's sigleblog", res.data.data);
-      setSingleBlog(res.data.data);
-    } catch (error) {
-      console.log("error", error.message);
-    }
-  };
+  const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
+  const singleBlog = useSelector((state) => state.blog.singleBlog);
+  const reviews = useSelector((state) => state.blog.reviews);
   useEffect(() => {
-    getSingleBlog();
-  }, []);
-  return (
-    <>
-      <h1>this is detail blog yeahhh</h1>
+    dispatch(blogActions.getSingleBlog(blog_id));
+    dispatch(blogActions.getReviews(blog_id, page));
+  }, [page]);
 
-      <p>{singleBlog && singleBlog.content}</p>
-      {/* <h1>
-        {singleBlog &&
-          singleBlog.reviews.map((review) => (
-            <>
-              <p>{review.title}</p>
-              <p>{review.title}</p>
-            </>
-          ))}
-      </h1> */}
-    </>
+  return (
+    <div>
+      <h1>this is detail blog yeahhh</h1>
+      <h1>{singleBlog && singleBlog.title}</h1>
+      <h1>Review part</h1>
+      <p>{reviews && reviews.content}</p>
+      <PublicPagination page={page} setPage={setPage} />
+    </div>
   );
 };
 
