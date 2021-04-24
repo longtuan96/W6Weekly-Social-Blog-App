@@ -60,7 +60,15 @@
 .BlogBox {
   width: 100%;
   height: auto;
+  border: yellow 1px solid;
 }
 .BlogBox #imgBody {
   width: 100%;
+}
+
+.newBlogBox {
+  color: white;
+  width: 100%;
+  height: auto;
+  border: yellow 1px solid;
 }

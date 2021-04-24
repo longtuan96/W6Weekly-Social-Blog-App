@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BlogBox from "../../components/BlogBox";
+import NewBlogBox from "../../components/NewBlogBox";
 import UserInfo from "../../components/UserInfo";
 import { blogActions } from "../../redux/actions/blog.action";
 
@@ -27,7 +28,11 @@ const Homepage = () => {
         <UserInfo />
       </div>
       <div className="col-6">
-        {blogs && blogs.map((item) => <BlogBox item={item} />)}
+        <NewBlogBox />
+        {blogs &&
+          blogs.map((item, itemIndex) => (
+            <BlogBox key={itemIndex} item={item} />
+          ))}
       </div>
       <div className="col-3"></div>
     </div>
