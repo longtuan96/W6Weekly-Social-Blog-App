@@ -9,6 +9,7 @@ import api from "../../redux/api";
 
 const Homepage = () => {
   const dispatch = useDispatch();
+  // localStorage.clear()
   const blogs = useSelector((state) => state.blog.blogs);
 
   const handleClick = () => {};
