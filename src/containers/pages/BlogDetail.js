@@ -8,23 +8,54 @@ import { blogActions } from "../../redux/actions/blog.action";
 import moment from "moment";
 import { Button, Badge } from "react-bootstrap";
 import ReviewBox from "../../components/ReviewBox";
+import PaginationComp from "../../components/PaginationComp";
+import { paginationActions } from "../../redux/actions/pagination.action";
 
 const BlogDetail = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const singleBlog = useSelector((state) => state.blog.singleBlog);
-  const loading = useSelector((state) => state.blog.loading);
+  const loadingSingleBlog = useSelector(
+    (state) => state.blog.loadingSingleBlog
+  );
 
   const { blog_id } = useParams();
   const handleGoBack = () => {
     history.goBack();
   };
+  const totalPageReviews = useSelector(
+    (state) => state.pagination.totalPageReviews
+  );
+  const currentPageReviews = useSelector(
+    (state) => state.pagination.currentPageReviews
+  );
+  const handlePaginationClick = (direction) => {
+    switch (direction) {
+      case "next":
+        dispatch(paginationActions.nextPage(currentPageReviews, "reviews"));
+        break;
+      case "prev":
+        dispatch(paginationActions.prevPage(currentPageReviews, "reviews"));
+        break;
+      case "first":
+        dispatch(paginationActions.firstPage(currentPageReviews, "reviews"));
+        break;
+      case "last":
+        dispatch(paginationActions.lastPage(currentPageReviews, "reviews"));
+        break;
+      default:
+        break;
+    }
+  };
+  const currentPageReivews = useSelector(
+    (state) => state.pagination.currentPageReivews
+  );
   useEffect(() => {
-    dispatch(blogActions.getSingleBlog(blog_id));
-  }, []);
+    dispatch(blogActions.getSingleBlog(blog_id, currentPageReviews));
+  }, [currentPageReviews]);
   return (
     <div>
-      {loading ? (
+      {loadingSingleBlog ? (
         <h1>LOADING</h1>
       ) : (
         <div>
@@ -118,6 +149,15 @@ const BlogDetail = () => {
                 <ReviewBox review={item} />
               ))}
             </div>
+            {singleBlog.reviewCount <= 10 ? (
+              ""
+            ) : (
+              <PaginationComp
+                handlePaginationClick={handlePaginationClick}
+                currentPage={currentPageReviews}
+                totalPage={totalPageReviews}
+              />
+            )}
           </div>
         </div>
       )}

@@ -61,6 +61,7 @@ const BlogBox = ({ item }) => {
           </div>
           <h6>{item.title}</h6>
           <p>{item.content}</p>
+          <p>{`${item.reviewCount} reviews`}</p>
           {item.images ? <img src={item.images[0]} alt="" id="imgBody" /> : ""}
         </Media.Body>
       </Media>

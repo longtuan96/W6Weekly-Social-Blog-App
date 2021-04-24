@@ -1,11 +1,15 @@
 import * as types from "../constants/blog.constant";
 
 const initialState = {
-  loading: true,
+  loadingBlogs: true,
+  loadingSingleBlog: true,
   blogs: [],
   newBlogs: [],
-  singleBlog: null,
+  singleBlog: {},
+  newSingleBlog: {},
   reviews: [],
+  currentPageBlogs: 0,
+  currentPageReviews: 0,
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -15,28 +19,31 @@ const blogReducer = (state = initialState, action) => {
     case types.DELETEBLOGS_REQUEST_START:
     case types.NEWBLOGS_REQUEST_START:
     case types.BLOGS_REQUEST_START:
-      state.loading = true;
+      state.loadingBlogs = true;
       break;
 
     case types.BLOGS_REQUEST_SUCCESS:
-      state.loading = false;
       state.blogs = payload;
+      state.loading = false;
+
       break;
     case types.UPDATEBLOGS_REQUEST_SUCCESS:
     case types.NEWBLOGS_REQUEST_SUCCESS:
-      state.loading = false;
       state.newBlogs = payload;
+      state.loading = false;
+
       break;
     case types.SINGLEBLOG_REQUEST_SUCCESS:
-      state.loading = false;
       state.singleBlog = payload;
+      state.loadingSingleBlog = false;
+
       break;
 
     case types.DELETEBLOGS_REQUEST_FAIL:
     case types.NEWBLOGS_REQUEST_FAIL:
     case types.BLOGS_REQUEST_FAIL:
     case types.UPDATEBLOGS_REQUEST_FAIL:
-      state.loading = false;
+      state.loadingBlogs = false;
       break;
 
     default:
