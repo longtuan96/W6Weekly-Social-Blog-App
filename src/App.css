@@ -1,22 +1,153 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px !important;
+  user-select: none;
+  background-color: #15202b !important;
+  color: white !important;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold !important;
+}
+
+
 .Ultility-page {
   width: 100vw;
   height: auto;
-  background: black;
-  margin-left: 0;
-  margin-right: 0;
+}
+
+/* Buttons */
+
+.btn-dark {
+  border-radius: 9999px;
+  padding: 0 2rem;
+  border: 1px solid #1da1f2 !important;
+  outline: none;
+  background: transparent !important;
+  color: #1da1f2 !important;
+  transition: 0.2s;
+  height: 3rem;
+}
+
+.btn-dark:hover {
+  background-color: hsl(210, 34%, 20%) !important;
+}
+
+.btn-light {
+  border-radius: 9999px;
+  padding: 0 2rem;
+  border: 0 !important;
+  outline: none;
+  background-color: #1da1f2 !important;
+  color: white !important;
+  transition: 0.2s;
+  height: 3rem;
+}
+
+.btn-light:hover {
+  background-color: hsl(203, 89%, 45%) !important;
+}
+
+/* Welcome Page */
+
+.welcome-page {
+  display: flex;
+  justify-content: center;
 }
 
 .Welcome-img {
   height: 100vh;
-  width: auto;
-  display: flex;
+  /* max-width: 80rem; */
+  /* display: flex; */
   justify-content: center;
   align-items: center;
-  border: 1px yellow solid;
+  /* overflow: hidden; */
+  position: relative;
+  
 }
-.Welcome-button {
-  margin-top: 2%;
+
+.overlay1 {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: linear-gradient(to left, #15202b ,transparent);
 }
+
+.Welcome-img img {
+  height: 100%;
+  object-fit:none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -2;
+  transform: scaleX(-1);
+}
+
+.welcome-page-right {
+  padding-left: 3rem !important;
+}
+
+.form-login {
+  height: 4rem;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.form-text-input {
+  height: 80%;
+  outline: none;
+  background: transparent;
+  color: white;
+  padding: 0 0.5rem;
+  margin: 0;
+  border: 1px solid hsl(206, 16%, 26%);
+  border-radius: 4px;
+  margin-right: 1rem;
+  max-width: 20rem;
+}
+
+.form-text-input:focus {
+  background: transparent;
+  border: 1px solid #1da1f2;
+}
+
+.form-login button { 
+}
+
+::placeholder {
+  color: #8899a6;
+}
+
+
+.welcome-page-right-bot {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  justify-content: center;
+  height: 80vh;
+}
+
+.welcome-page-right-bot h1 {
+  font-size: 4rem;
+  margin-bottom: 1em;
+}
+
+.welcome-page-right-bot button {
+  margin-top: 1rem;
+}
+
 
 .centered-div {
   position: fixed;
