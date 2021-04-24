@@ -11,11 +11,11 @@
 
   _After simple registering and login function finished_
 
-- [ ] post new blogs (after login) **Dinh**
-- [ ] update existing own blogs (after login) **Dinh**
-- [ ] delete owning blogs (after login) **Dinh**
-- [ ] write review to existing blogs (after login) **Hue**
-- [ ] add react function to blogs **Josh**
+- [x] post new blogs (after login) **Dinh**
+- [x] update existing own blogs (after login) **Dinh**
+- [x] delete owning blogs (after login) **Dinh**
+- [x] write review to existing blogs (after login) **Hue**
+- [x] add react function to blogs **Josh**
       Merging Code
 
 ## Must be finished within Saturday

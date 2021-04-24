@@ -5,13 +5,14 @@ import { useHistory } from "react-router";
 import { blogActions } from "../redux/actions/blog.action";
 
 const NewBlogBox = () => {
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const history = useHistory();
-  const redirectTo = useSelector((state) => state.route.redirectTo);
+  const redirectTo = useSelector((state) => state.route).redirectTo;
   const [formData, setFormData] = useState({
-    title: "",
     content: "",
     imageUrl: "",
+    title: "",
   });
 
   const handleChange = (e) => {
@@ -36,13 +37,13 @@ const NewBlogBox = () => {
           width={64}
           height={64}
           className="mr-3"
-          src=""
+          src={user.avatarUrl}
           alt="current user avatar"
         />
         <Media.Body>
           <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicEmail"></Form.Group>
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Title"
