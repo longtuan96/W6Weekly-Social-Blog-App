@@ -38,7 +38,7 @@ const Registerpage = () => {
   }, [redirectTo]);
 
   return (
-    <div className="Ultility-page ">
+    <div className="Ultility-page">
       <div className="Register-div centered-div">
         <h1>Create your account</h1>
         <Form onSubmit={handleSubmit}>
@@ -85,9 +85,9 @@ const Registerpage = () => {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <button className="btn-light" type="submit">
             Submit
-          </Button>
+          </button>
         </Form>
       </div>
     </div>

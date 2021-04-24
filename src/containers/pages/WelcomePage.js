@@ -38,55 +38,51 @@ const WelcomePage = () => {
       {localStorage.getItem("isAuthenticated") ? (
         history.push("/home")
       ) : (
-        <div className="Ultility-page row">
-          <div className="col-7 Welcome-img">
-            <h1>a big picture</h1>
+        <div className="Ultility-page welcome-page row">
+          <div className="Welcome-img col-5">
+            <div className="overlay1" />
+            <img src="welcome.jpg" />
           </div>
-          <div className="col-5">
-            <Form onSubmit={handleSubmit}>
-              <Form.Row>
-                <Col>
-                  <Form.Control
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    onChange={handleChange}
-                  />
-                </Col>
-                <Col>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={handleChange}
-                  />
-                </Col>
-                <Col>
-                  <Button type="submit" variant="outline-primary">
-                    Log in
-                  </Button>
-                </Col>
-              </Form.Row>
-            </Form>
+          <div className="welcome-page-right">
+            <form className="form-login" onSubmit={handleSubmit}>
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={handleChange}
+                className="form-text-input"
+              />
 
-            <div>
-              <h1>Join Twitter today</h1>
-              <ButtonGroup vertical>
-                <Button
-                  className="Welcome-button"
-                  variant="primary"
-                  onClick={() => handleClick("register")}
-                >
-                  Sign up
-                </Button>
-                <Button
-                  className="Welcome-button"
-                  variant="outline-primary"
-                  onClick={() => handleClick("login")}
-                >
-                  Log In
-                </Button>
-              </ButtonGroup>
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={handleChange}
+                className="form-text-input"
+              />
+
+              <button type="submit" className="btn-dark">
+                Log in
+                  </button>
+
+            </form>
+
+            <div className="welcome-page-right-bot">
+              <h1>Hapenning now</h1>
+              <h2>Join Twitter today.</h2>
+
+              <button
+                className="btn-light"
+                onClick={() => handleClick("register")}
+              >
+                Sign up
+                </button><br />
+              <button
+                className="btn-dark"
+                onClick={() => handleClick("login")}
+              >
+                Log In
+                </button>
             </div>
           </div>
         </div>
