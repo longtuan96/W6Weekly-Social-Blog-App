@@ -59,9 +59,15 @@ const BlogDetail = () => {
       ) : (
         <div className="App-mid">
           <button onClick={handleGoBack}>Back</button>
-          <img className="tweet-img" src={singleBlog.author.avatarUrl ? singleBlog.author.avatarUrl
-            : "profile.jpg"
-          } alt="user-avatar" />
+          <img
+            className="tweet-img"
+            src={
+              singleBlog.author.avatarUrl
+                ? singleBlog.author.avatarUrl
+                : "profile.jpg"
+            }
+            alt="user-avatar"
+          />
           {/* <img src={singleBlog.author.avatarUrl} alt="user avatar" /> */}
           <div>
             <h1>{singleBlog.author.name}</h1>
@@ -71,6 +77,11 @@ const BlogDetail = () => {
             <p>
               {moment(singleBlog.createdAt).format("h:mm a . MMM Do ,YYYY")}
             </p>
+            {singleBlog.images.length !== 0
+              ? singleBlog.images.map((item) => (
+                  <img src={item} alt="user images" />
+                ))
+              : ""}
             <div className="d-flex">
               <Button
                 name="angry"
