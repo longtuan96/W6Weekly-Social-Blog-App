@@ -30,12 +30,17 @@ const TestImgUpload = ({ place }) => {
   };
   return (
     <div>
+      <label for="file-upload">
+        <span class="material-icons nav-link">image</span>
+      </label>
       <input
+        id="file-upload"
         type="file"
         name="file"
-        placeholder="upload an image"
         onChange={uploadImage}
+        style={{ zIndex: -1, opacity: 0, position: "absolute" }}
       />
+
       {loading ? "" : <p>Upload done</p>}
     </div>
   );

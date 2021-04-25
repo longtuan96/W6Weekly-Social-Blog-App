@@ -57,7 +57,7 @@ const NewBlogBox = () => {
           onChange={handleChange}
         />
         <div className="tweet-right-bot">
-          <span class="material-icons nav-link">image</span>
+          <TestImgUpload />
           <button className="btn-light" type="submit">
             Tweet
           </button>
