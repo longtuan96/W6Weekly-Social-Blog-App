@@ -104,6 +104,22 @@ const reactionClick = (type, id, emoji) => async (dispatch) => {
     console.log("error", error.message);
   }
 };
+const newReview = (id, data) => async (dispatch) => {
+  try {
+    dispatch({ type: types.NEWREVIEW_REQUEST_START, payload: null });
+    const res = await api.post(`reviews/blogs/${id}`, data);
+    console.log("new review!!! ");
+
+    dispatch({
+      type: types.NEWREVIEW_REQUEST_SUCCESS,
+      payload: data,
+    });
+    console.log("new review uploaded!!!");
+  } catch (error) {
+    dispatch({ type: types.NEWREVIEW_REQUEST_FAIL, payload: null });
+    console.log("Error in newReview: ", error.message);
+  }
+};
 
 export const blogActions = {
   getBlogs,
@@ -112,4 +128,5 @@ export const blogActions = {
   deleteBlog,
   getSingleBlog,
   reactionClick,
+  newReview,
 };

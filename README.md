@@ -20,7 +20,7 @@
 
 ## Must be finished within Saturday
 
-- [ ] Add Pagination for needed parts **Josh and Hue**
+- [x] Add Pagination for needed parts **Josh and Hue**
 - [ ] get list for friends **Tuan**
 - [ ] sending friend request and accept/denied it **Tuan**
 - [ ] searching post or sort blogs **Dinh**

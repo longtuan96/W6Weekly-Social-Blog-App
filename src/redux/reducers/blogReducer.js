@@ -8,6 +8,7 @@ const initialState = {
   singleBlog: {},
   newSingleBlog: {},
   reviews: [],
+  newReview: {},
   currentPageBlogs: 0,
   currentPageReviews: 0,
 };

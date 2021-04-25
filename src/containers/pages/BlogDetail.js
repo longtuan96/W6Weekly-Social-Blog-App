@@ -10,6 +10,7 @@ import { Button, Badge } from "react-bootstrap";
 import ReviewBox from "../../components/ReviewBox";
 import PaginationComp from "../../components/PaginationComp";
 import { paginationActions } from "../../redux/actions/pagination.action";
+import NewReviewBox from "../../components/NewReviewBox";
 
 const BlogDetail = () => {
   const dispatch = useDispatch();
@@ -47,9 +48,7 @@ const BlogDetail = () => {
         break;
     }
   };
-  const currentPageReivews = useSelector(
-    (state) => state.pagination.currentPageReivews
-  );
+
   useEffect(() => {
     dispatch(blogActions.getSingleBlog(blog_id, currentPageReviews));
   }, [currentPageReviews]);
@@ -144,6 +143,7 @@ const BlogDetail = () => {
               </Button>
             </div>
             <p>{singleBlog.reviewCount} reviews</p>
+            <NewReviewBox id={singleBlog._id} />
             <div>
               {singleBlog.reviews.map((item) => (
                 <ReviewBox review={item} />
