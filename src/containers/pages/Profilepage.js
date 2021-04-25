@@ -1,6 +1,7 @@
 import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import BlogBox from "../../components/BlogBox";
 import FriendCard from "../../components/FriendCard";
 import TestImgUpload from "../../components/TestImgUpload";
@@ -9,11 +10,12 @@ import { friendShipActions } from "../../redux/actions/friendship.action";
 import { userActions } from "../../redux/actions/user.action";
 
 const Profilepage = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   const blogs = useSelector((state) => state.blog.blogs);
 
-  const filteredBlogs = blogs.filter((item) => item.author.name === "siris");
+  const filteredBlogs = blogs.filter((item) => item.author.name === user.name);
 
   console.log("blogs: ", blogs);
   console.log("filtered:", filteredBlogs);
@@ -51,6 +53,7 @@ const Profilepage = () => {
         <h1>LOADING</h1>
       ) : (
         <div>
+          <button onClick={history.goBack}>Back</button>
           <h3>{user.name}</h3>
           <h5>{user.email}</h5>
           <p>{`Joined on ${moment(user.createdAt).format("MMMM,YYYY")}`}</p>
