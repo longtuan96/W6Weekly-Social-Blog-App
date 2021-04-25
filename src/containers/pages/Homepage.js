@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import BlogBox from "../../components/BlogBox";
 import NewBlogBox from "../../components/NewBlogBox";
 import PaginationComp from "../../components/PaginationComp";
+import Navbar from "../../components/Navbar";
 import UserInfo from "../../components/UserInfo";
 import { blogActions } from "../../redux/actions/blog.action";
 import { paginationActions } from "../../redux/actions/pagination.action";
@@ -49,13 +50,9 @@ const Homepage = () => {
     }
   };
   return (
-    <div className="row Ultility-page">
-      <div className="col-3">
-        <div className="buttonForShow-div">
-          list of vertical button for show
-        </div>
-        <button onClick="">Profile</button>
-        <button onClick="">Tweet</button>
+    <div className="main-page">
+      <div className="navbar">
+        <Navbar />
         <UserInfo />
       </div>
       <div className="col-6">
@@ -72,7 +69,6 @@ const Homepage = () => {
           totalPage={totalPageBlogs}
         />
       </div>
-      <div className="col-3"></div>
     </div>
   );
 };

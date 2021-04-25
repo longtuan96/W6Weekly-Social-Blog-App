@@ -57,11 +57,11 @@ const Loginpage = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
+          {/* <Form.Group controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
+          </Form.Group> */}
           <button className="btn-light" type="submit">
-            Submit
+            Log In
           </button>
         </Form>
       </div>
