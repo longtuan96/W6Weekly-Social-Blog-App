@@ -33,43 +33,36 @@ const NewBlogBox = () => {
   }, [redirectTo]);
 
   return (
-    <div className="newBlogBox">
-      <Media>
+    <div className="tweet-form">
+      <div className="tweet-left">
         <img
-          width={64}
-          height={64}
-          className="mr-3"
-          src={user.avatarUrl}
-          alt="current user avatar"
+          className="user-img"
+          src={user.avatarUrl ? user.avatarUrl : "profile.jpg"}
+          alt="user-avatar"
         />
-        <Media.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail"></Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Control
-                type="text"
-                placeholder="Title"
-                name="title"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Control
-                type="text"
-                placeholder="What are you thinking about"
-                name="content"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <div className="d-flex justify-content-between">
-              <TestImgUpload place="newBlog" />
-              <Button variant="primary" type="submit">
-                Tweet
-              </Button>
-            </div>
-          </Form>
-        </Media.Body>
-      </Media>
+      </div>
+
+      <form className="tweet-right" onSubmit={handleSubmit}>
+        <input
+          className="form-text-input"
+          type="text"
+          placeholder="Title"
+          name="title"
+          onChange={handleChange}
+        />
+        <textarea
+          type="text"
+          placeholder="What's happening?"
+          name="content"
+          onChange={handleChange}
+        />
+        <div className="tweet-right-bot">
+          <span class="material-icons nav-link">image</span>
+          <button className="btn-light" type="submit">
+            Tweet
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

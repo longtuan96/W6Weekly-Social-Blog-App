@@ -55,8 +55,12 @@ const Homepage = () => {
         <Navbar />
         <UserInfo />
       </div>
-      <div className="col-6">
+      <div className="App-mid">
+        <div className="page-header">
+          <h5>New Tweet</h5>
+        </div>
         <NewBlogBox />
+        <div className="spacer"></div>
         {blogs &&
           blogs.map((item, itemIndex) => (
             <a href onClick={() => handleBlogClick(item._id)}>

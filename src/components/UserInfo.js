@@ -20,7 +20,7 @@ const UserInfo = () => {
   return (
     <div className="nav-link user">
       <div className="">
-        <img src={user.avatarUrl ? user.avatarUrl
+        <img className="user-img" src={user.avatarUrl ? user.avatarUrl
           : "profile.jpg"
         } alt="user-avatar" />
       </div>

@@ -35,12 +35,12 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent !important;
   color: #1da1f2 !important;
   transition: 0.2s;
-  height: 3rem;
+  height: 3em;
   box-sizing: content-box !important;
 }
 
 .btn-dark:hover {
-  background-color: hsl(210, 34%, 20%) !important;
+  background-color: hsla(210, 34%, 20%, 0.2) !important;
 }
 
 .btn-light {
@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #1da1f2 !important;
   color: white !important;
   transition: 0.2s;
-  height: 3rem;
+  height: 3em;
   box-sizing: content-box !important;
 }
 
@@ -159,42 +159,6 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(-50%, -50%);
 }
 
-.Login-div {
-  color: white;
-  width: 30%;
-  height: 30%;
-}
-
-.Register-div {
-  color: white;
-  width: 30%;
-  height: auto;
-}
-
-
-
-.red-border {
-  border: red 1px solid;
-}
-
-.BlogBox {
-  width: 100%;
-  height: auto;
-  border: yellow 1px solid;
-  color: white;
-}
-.BlogBox #imgBody {
-  width: 100%;
-}
-
-.newBlogBox {
-  color: white;
-  width: 100%;
-  height: auto;
-  border: yellow 1px solid;
-}
-
-
 /* HOMEPAGE */
 .main-page {
   /* border: 1px solid black; */
@@ -210,13 +174,15 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-end !important;
   width: 17rem;
   height: 100vh;
   padding: 0 0.5rem !important;
   /* border: 1px solid blue; */
   position: sticky !important;
   top: 0;
- 
+  flex-wrap: nowrap !important;
+  box-sizing: content-box !important;
 }
 
 .navbar-top {
@@ -258,10 +224,9 @@ h1, h2, h3, h4, h5, h6 {
   background-color: hsl(203, 89%, 15%);
 }
 
-.user img {
+.user-img {
   width: 2.5rem;
   border-radius: 100%;
-  margin-right: 1em;
 }
 
 .user {
@@ -269,6 +234,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   display: flex !important;
   position: relative;
+}
+
+.user img {
+  margin-right: 1em;
 }
 
 .user p {
@@ -290,13 +259,194 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .log-out {
-
   cursor: pointer !important;
   color: #8899a6 !important;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  text-align: center;
 }
 
 .log-out:hover {
   text-decoration: none !important;
   color:#1da1f2 !important;
+}
+
+/* Middle section */
+.App-mid {
+  width: 37rem;
+  /* border: 1px solid green; */
+  display:flex;
+  flex-direction: column;
+}
+
+/* Tweet form */
+
+.tweet-form {
+  height: 12rem;
+  border: 1px solid hsl(206, 16%, 26%);
+  border-top:none;
+  display: flex;
+}
+
+.tweet-left {
+  width: 6rem;
+  /* border: 1px solid lightgrey; */
+  text-align: center;
+  padding-top: 0.7rem;
+}
+
+.tweet-left img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+
+.tweet-right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid lightgrey; */
+  padding: 0.6rem 0;
+}
+
+.tweet-right input {
+  height: 2rem;
+}
+
+.tweet-right textarea {
+  display: block;
+  width: 95%;
+  padding: 0;
+  border: none;
+  /* border: 1px solid lightgrey; */
+  outline: none;
+  font-size: 1.3rem;
+  resize:none;
+  overflow: auto;
+  font-family: inherit;
+  padding: 0.5rem;
+  background: transparent;
+  color: white;
+}
+
+::placeholder {
+  color: #8899a6;
+}
+
+.tweet-right-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid hsl(206, 16%, 26%);
+  padding: 0.6rem;
+  padding-bottom: 0;
+  width: 95%
+}
+
+.tweet-right-bot button {
+  font-size: 0.8rem !important;
+  margin: 0;
+}
+
+.tweet-right-bot .nav-link {
+  font-size: 1.5rem !important;
+  padding: 0.5em !important;
+}
+
+.page-header {
+  height: 3rem;
+  padding: 0 1em;
+  border: 1px solid hsl(206, 16%, 26%);
+  border-top: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.spacer {
+  background-color: #192734;
+  height: 0.8rem;
+  border: 1px solid hsl(206, 16%, 26%);
+  border-top: none;
+}
+
+
+/* single tweet */
+
+.tweet {
+  border: 1px solid hsl(206, 16%, 26%);
+  border-top:none;
+  display: flex;
+}
+
+.tweet-header {
+  margin-bottom: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet-header a {
+  font-size: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0 0.5em;
+}
+
+.tweet-header a:hover {
+  background-color: #192734;
+}
+
+
+.tweet-user-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.tweet-user-email {
+  font-weight: normal;
+  color: #8899a6;
+  font-size: 0.9rem;
+}
+
+.time {
+  color: #8899a6;
+}
+
+.img-box {
+  width: 95%;
+  padding-top: 56.25%;/* 16:9 Aspect Ratio */
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.img-box img {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.tweet-text {
+  margin-bottom: 0.6rem !important;
+}
+
+.tweet-reactions {
+  color: #8899a6;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  transition: 0.2s;
+}
+
+.tweet-reactions:hover {
+  color: hsl(330, 50%, 50%)
+}
+
+.tweet-reactions span {
+  margin-right: 0.2em;
 }
