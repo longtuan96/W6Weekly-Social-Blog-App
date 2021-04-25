@@ -38,7 +38,7 @@ const Navbar = () => {
                 <span className="material-icons nav-icon">more_horiz</span>
                 <span>More</span>
             </div>
-            <button className="btn-light">Tweet</button>
+            {/* <button className="btn-light">Tweet</button> */}
         </div>
 
     )

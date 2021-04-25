@@ -159,42 +159,6 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(-50%, -50%);
 }
 
-.Login-div {
-  color: white;
-  width: 30%;
-  height: 30%;
-}
-
-.Register-div {
-  color: white;
-  width: 30%;
-  height: auto;
-}
-
-
-
-.red-border {
-  border: red 1px solid;
-}
-
-.BlogBox {
-  width: 100%;
-  height: auto;
-  border: yellow 1px solid;
-  color: white;
-}
-.BlogBox #imgBody {
-  width: 100%;
-}
-
-.newBlogBox {
-  color: white;
-  width: 100%;
-  height: auto;
-  border: yellow 1px solid;
-}
-
-
 /* HOMEPAGE */
 .main-page {
   /* border: 1px solid black; */
@@ -403,4 +367,85 @@ h1, h2, h3, h4, h5, h6 {
   height: 0.8rem;
   border: 1px solid hsl(206, 16%, 26%);
   border-top: none;
+}
+
+
+/* single tweet */
+
+.tweet {
+  border: 1px solid hsl(206, 16%, 26%);
+  border-top:none;
+  display: flex;
+}
+
+.tweet-header {
+  margin-bottom: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet-header a {
+  font-size: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0 0.5em;
+}
+
+.tweet-header a:hover {
+  background-color: #192734;
+}
+
+
+.tweet-user-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.tweet-user-email {
+  font-weight: normal;
+  color: #8899a6;
+  font-size: 0.9rem;
+}
+
+.time {
+  color: #8899a6;
+}
+
+.img-box {
+  width: 95%;
+  padding-top: 56.25%;/* 16:9 Aspect Ratio */
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.img-box img {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.tweet-text {
+  margin-bottom: 0.6rem !important;
+}
+
+.tweet-reactions {
+  color: #8899a6;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  transition: 0.2s;
+}
+
+.tweet-reactions:hover {
+  color: hsl(330, 50%, 50%)
+}
+
+.tweet-reactions span {
+  margin-right: 0.2em;
 }
