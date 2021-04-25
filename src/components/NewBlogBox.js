@@ -3,15 +3,17 @@ import { Media, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { blogActions } from "../redux/actions/blog.action";
+import TestImgUpload from "./TestImgUpload";
 
 const NewBlogBox = () => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const history = useHistory();
   const redirectTo = useSelector((state) => state.route).redirectTo;
+  const imgUrlNewBlog = useSelector((state) => state.blog.imgUrlNewBlog);
   const [formData, setFormData] = useState({
     content: "",
-    imageUrl: "",
+    imageUrl: imgUrlNewBlog,
     title: "",
   });
 
@@ -60,7 +62,7 @@ const NewBlogBox = () => {
               />
             </Form.Group>
             <div className="d-flex justify-content-between">
-              <Button variant="primary">add image</Button>
+              <TestImgUpload place="newBlog" />
               <Button variant="primary" type="submit">
                 Tweet
               </Button>

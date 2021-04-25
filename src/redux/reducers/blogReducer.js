@@ -11,6 +11,7 @@ const initialState = {
   newReview: {},
   currentPageBlogs: 0,
   currentPageReviews: 0,
+  imgUrlNewBlog: "",
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -25,7 +26,7 @@ const blogReducer = (state = initialState, action) => {
 
     case types.BLOGS_REQUEST_SUCCESS:
       state.blogs = payload;
-      state.loading = false;
+      state.loadingBlogs = false;
 
       break;
     case types.UPDATEBLOGS_REQUEST_SUCCESS:
@@ -46,7 +47,9 @@ const blogReducer = (state = initialState, action) => {
     case types.UPDATEBLOGS_REQUEST_FAIL:
       state.loadingBlogs = false;
       break;
-
+    case "UPLOAD_IMG":
+      state.imgUrlNewBlog = payload;
+      break;
     default:
       break;
   }

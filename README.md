@@ -21,9 +21,9 @@
 ## Must be finished within Saturday
 
 - [x] Add Pagination for needed parts **Josh and Hue**
-- [ ] get list for friends **Tuan**
-- [ ] sending friend request and accept/denied it **Tuan**
-- [ ] searching post or sort blogs **Dinh**
+- [x] get list for friends **Tuan**
+- [x] sending friend request and accept/denied it **Tuan**
+- [x] searching post or sort blogs **Dinh**
       Merging Code
 
 ## Sunday

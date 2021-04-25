@@ -4,16 +4,17 @@ import { authActions } from "../../redux/actions/auth.action";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { routeActions } from "../../redux/actions/route.action";
+import TestImgUpload from "../../components/TestImgUpload";
 const Registerpage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const redirectTo = useSelector((state) => state.route.redirectTo);
+  const imgUrl = useSelector((state) => state.auth.imgUrl);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     password2: "",
-    avatarUrl: "",
   });
 
   const handleChange = (e) => {
@@ -21,12 +22,15 @@ const Registerpage = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, email, password, password2, avatarUrl } = formData;
+    console.log("register data:", formData);
+    const { name, email, password, password2 } = formData;
     if (password !== password2) {
       console.log("password is not match");
       return;
     } else {
-      dispatch(authActions.registerUser({ name, email, password, avatarUrl }));
+      dispatch(
+        authActions.registerUser({ name, email, password, avatarUrl: imgUrl })
+      );
     }
   };
 
@@ -84,7 +88,7 @@ const Registerpage = () => {
               onChange={handleChange}
             />
           </Form.Group>
-
+          <TestImgUpload place="register" />
           <button className="btn-light" type="submit">
             Submit
           </button>
