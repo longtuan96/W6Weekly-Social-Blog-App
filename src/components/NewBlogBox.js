@@ -36,7 +36,7 @@ const NewBlogBox = () => {
     <div className="tweet-form">
       <div className="tweet-left">
         <img
-          className="user-img"
+          className="tweet-img"
           src={user.avatarUrl ? user.avatarUrl : "profile.jpg"}
           alt="user-avatar"
         />

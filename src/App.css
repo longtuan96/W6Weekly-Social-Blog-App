@@ -226,6 +226,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .user-img {
   width: 2.5rem;
+  height: 2.5rem;
   border-radius: 100%;
 }
 
@@ -294,7 +295,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 0.7rem;
 }
 
-.tweet-left img {
+.tweet-img {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
