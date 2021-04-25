@@ -6,7 +6,7 @@ import ProtectedRoute from "./ProtectedRoute";
 const Routes = () => {
   return (
     <Switch>
-      <ProtectedRoute path="/admin" component={AdminLayout} />
+      <ProtectedRoute path="/user" component={AdminLayout} />
       <Route path="/" component={PublicLayout} />
     </Switch>
   );

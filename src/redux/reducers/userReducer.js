@@ -2,21 +2,21 @@ import * as types from "../constants/user.constant";
 
 const initialState = {
   user: {},
-  loading: false,
+  loadingUser: false,
 };
 
 const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case types.USER_REQUEST_START:
-      state.loading = true;
+      state.loadingUser = true;
       break;
     case types.USER_REQUEST_SUCCESS:
-      state.loading = false;
+      state.loadingUser = false;
       state.user = payload;
       break;
     case types.USER_REQUEST_FAIL:
-      state.loading = false;
+      state.loadingUser = false;
       break;
     default:
       break;
