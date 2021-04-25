@@ -23,33 +23,28 @@ const NewReviewBox = ({ id }) => {
   };
 
   return (
-    <div className="newBlogBox">
-      <Media>
-        <img
-          width={64}
-          height={64}
-          className="mr-3"
-          src={user.avatarUrl}
-          alt="current user avatar"
-        />
-        <Media.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Control
-                type="text"
-                placeholder="What are you thinking about"
-                name="content"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <div className="d-flex justify-content-center">
-              <Button variant="primary" type="submit">
-                Tweet
-              </Button>
-            </div>
-          </Form>
-        </Media.Body>
-      </Media>
+    <div className="tweet-form review-form">
+      <div className="tweet-left">
+        <img className="tweet-img" src={user.avatarUrl ? user.avatarUrl
+          : "profile.jpg"
+        } alt="user-avatar" />
+      </div>
+      <div className="tweet-right">
+        <form className="" onSubmit={handleSubmit}>
+
+          <textarea
+            placeholder="Write your review here"
+            onChange={handleChange}
+          />
+
+          <div className="tweet-right-bot">
+            <button className="btn-light" type="submit">
+              Submit
+              </button>
+          </div>
+        </form>
+      </div>
+
     </div>
   );
 };

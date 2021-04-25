@@ -30,7 +30,7 @@ const BlogBox = ({ item }) => {
             <h5 className="tweet-user-name">{item.author.name}</h5>
             <p className="tweet-user-email">{item.author.email}</p>
           </div>
-          <a className="log-out" ref={target} onClick={() => setShowOverlay(!showOverlay)}>
+          <a className="custom-link" ref={target} onClick={() => setShowOverlay(!showOverlay)}>
             <span class="material-icons">more_horiz</span>
           </a>
         </div>
