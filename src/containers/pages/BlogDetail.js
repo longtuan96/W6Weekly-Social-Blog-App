@@ -53,13 +53,16 @@ const BlogDetail = () => {
     dispatch(blogActions.getSingleBlog(blog_id, currentPageReviews));
   }, [currentPageReviews]);
   return (
-    <div>
+    <div className="main-page">
       {loadingSingleBlog ? (
         <h1>LOADING</h1>
       ) : (
-        <div>
+        <div className="App-mid">
           <button onClick={handleGoBack}>Back</button>
-          <img src={singleBlog.author.avatarUrl} alt="user avatar" />
+          <img className="tweet-img" src={singleBlog.author.avatarUrl ? singleBlog.author.avatarUrl
+            : "profile.jpg"
+          } alt="user-avatar" />
+          {/* <img src={singleBlog.author.avatarUrl} alt="user avatar" /> */}
           <div>
             <h1>{singleBlog.author.name}</h1>
             <p>{singleBlog.author.email}</p>

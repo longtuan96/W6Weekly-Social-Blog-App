@@ -5,6 +5,7 @@ import AdminLayout from "../layouts/AdminLayout";
 import ProtectedRoute from "./ProtectedRoute";
 const Routes = () => {
   return (
+
     <Switch>
       <ProtectedRoute path="/user" component={AdminLayout} />
       <Route path="/" component={PublicLayout} />
