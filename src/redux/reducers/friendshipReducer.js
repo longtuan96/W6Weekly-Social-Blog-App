@@ -4,9 +4,11 @@ const initialState = {
   loadingFriends: true,
   loadingReceivedRequest: true,
   loadingSentRequest: true,
+  loadingUsers: true,
   friends: [],
   receivedFriendRequestList: [],
   sentFriendRequestList: [],
+  users: [],
 };
 
 const friendShipReducer = (state = initialState, action) => {
@@ -51,6 +53,21 @@ const friendShipReducer = (state = initialState, action) => {
       break;
     case types.SENT_FRIENDREQUESTLIST_REQUEST_FAIL:
       state.loadingSentRequest = false;
+      break;
+
+    default:
+      break;
+  }
+  switch (type) {
+    case types.USERS_REQUEST_START:
+      state.loadingUsers = true;
+      break;
+    case types.USERS_REQUEST_SUCCESS:
+      state.loadingUsers = false;
+      state.users = payload;
+      break;
+    case types.USERS_REQUEST_FAIL:
+      state.loadingUsers = false;
       break;
 
     default:

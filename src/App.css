@@ -9,16 +9,25 @@ body {
   color: white !important;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0 !important;
   padding: 0 !important;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold !important;
 }
-
 
 .Ultility-page {
   width: 100vw;
@@ -74,7 +83,6 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   /* overflow: hidden; */
   position: relative;
-  
 }
 
 .overlay1 {
@@ -84,12 +92,12 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 0;
   right: 0;
-  background-image: linear-gradient(to left, #15202b ,transparent);
+  background-image: linear-gradient(to left, #15202b, transparent);
 }
 
 .Welcome-img img {
   height: 100%;
-  object-fit:none;
+  object-fit: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -125,13 +133,12 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #1da1f2;
 }
 
-.form-login button { 
+.form-login button {
 }
 
 ::placeholder {
   color: #8899a6;
 }
-
 
 .welcome-page-right-bot {
   display: flex;
@@ -150,7 +157,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
-
 .centered-div {
   position: fixed;
   top: 50%;
@@ -163,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-page {
   /* border: 1px solid black; */
   max-width: 80rem;
-  margin:auto;
+  margin: auto;
   display: flex;
   justify-content: center;
   position: relative;
@@ -200,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link {
   font-size: 1.3rem !important;
-  font-weight:600;
+  font-weight: 600;
   /* border: 1px solid green; */
   display: flex !important;
   align-items: center;
@@ -209,14 +215,12 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   border-radius: 9999px;
   box-sizing: content-box !important;
-
 }
 
 .nav-icon {
   font-size: 2rem !important;
   margin-right: 0.6em;
   margin-left: 0.1em;
-
 }
 
 .nav-link:hover {
@@ -268,14 +272,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .log-out:hover {
   text-decoration: none !important;
-  color:#1da1f2 !important;
+  color: #1da1f2 !important;
 }
 
 /* Middle section */
 .App-mid {
   width: 37rem;
   /* border: 1px solid green; */
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -284,7 +288,7 @@ h1, h2, h3, h4, h5, h6 {
 .tweet-form {
   height: 12rem;
   border: 1px solid hsl(206, 16%, 26%);
-  border-top:none;
+  border-top: none;
   display: flex;
 }
 
@@ -321,7 +325,7 @@ h1, h2, h3, h4, h5, h6 {
   /* border: 1px solid lightgrey; */
   outline: none;
   font-size: 1.3rem;
-  resize:none;
+  resize: none;
   overflow: auto;
   font-family: inherit;
   padding: 0.5rem;
@@ -340,7 +344,7 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid hsl(206, 16%, 26%);
   padding: 0.6rem;
   padding-bottom: 0;
-  width: 95%
+  width: 95%;
 }
 
 .tweet-right-bot button {
@@ -361,7 +365,6 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 }
 
 .spacer {
@@ -371,12 +374,11 @@ h1, h2, h3, h4, h5, h6 {
   border-top: none;
 }
 
-
 /* single tweet */
 
 .tweet {
   border: 1px solid hsl(206, 16%, 26%);
-  border-top:none;
+  border-top: none;
   display: flex;
 }
 
@@ -399,7 +401,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #192734;
 }
 
-
 .tweet-user-name {
   font-size: 1.1rem;
   font-weight: 700;
@@ -417,11 +418,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .img-box {
   width: 95%;
-  padding-top: 56.25%;/* 16:9 Aspect Ratio */
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
   border-radius: 1rem;
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  object-position: center;
 }
 
 .img-box img {
@@ -445,7 +447,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tweet-reactions:hover {
-  color: hsl(330, 50%, 50%)
+  color: hsl(330, 50%, 50%);
 }
 
 .tweet-reactions span {

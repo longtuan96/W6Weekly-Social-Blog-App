@@ -11,9 +11,12 @@ const NewBlogBox = () => {
   const history = useHistory();
   const redirectTo = useSelector((state) => state.route).redirectTo;
   const imgUrlNewBlog = useSelector((state) => state.blog.imgUrlNewBlog);
+  let arrayImg = [];
+  arrayImg[0] = imgUrlNewBlog;
+  console.log("arrayImg: ", arrayImg[0]);
   const [formData, setFormData] = useState({
     content: "",
-    imageUrl: imgUrlNewBlog,
+    images: arrayImg[0],
     title: "",
   });
 
@@ -22,8 +25,8 @@ const NewBlogBox = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { title, content, imageUrl } = formData;
-    dispatch(blogActions.newBlog({ title, content, imageUrl }));
+    const { title, content, images } = formData;
+    dispatch(blogActions.newBlog({ title, content, images }));
   };
 
   useEffect(() => {

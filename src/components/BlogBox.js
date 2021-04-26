@@ -17,11 +17,12 @@ const BlogBox = ({ item }) => {
   };
   return (
     <div className="tweet">
-
       <div className="tweet-left">
-        <img className="tweet-img" src={item.author.avatarUrl ? item.author.avatarUrl
-          : "profile.jpg"
-        } alt="user-avatar" />
+        <img
+          className="tweet-img"
+          src={item.author.avatarUrl ? item.author.avatarUrl : "profile.jpg"}
+          alt="user-avatar"
+        />
       </div>
 
       <div className="tweet-right tweet-content">
@@ -30,21 +31,23 @@ const BlogBox = ({ item }) => {
             <h5 className="tweet-user-name">{item.author.name}</h5>
             <p className="tweet-user-email">{item.author.email}</p>
           </div>
-          <a className="log-out" ref={target} onClick={() => setShowOverlay(!showOverlay)}>
+          <a
+            className="log-out"
+            href
+            ref={target}
+            onClick={() => setShowOverlay(!showOverlay)}
+            style={{ zIndex: 100 }}
+          >
             <span class="material-icons">more_horiz</span>
           </a>
         </div>
 
-        <Overlay
-          target={target.current}
-          show={showOverlay}
-          placement="right"
-        >
+        <Overlay target={target.current} show={showOverlay} placement="left">
           {(props) => (
             <Tooltip id="overlay-example" {...props}>
               <Button variant="primary" onClick={handleShowModal}>
                 Edit
-                  </Button>
+              </Button>
               <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Body>
                   <EditBox id={item._id} />
@@ -55,7 +58,7 @@ const BlogBox = ({ item }) => {
                 onClick={() => handleDeleteBlog(item._id)}
               >
                 Delete
-                  </Button>
+              </Button>
             </Tooltip>
           )}
         </Overlay>
@@ -63,19 +66,18 @@ const BlogBox = ({ item }) => {
         <h5>{item.title}</h5>
         <p className="tweet-text">{item.content}</p>
 
-        {item.images ?
+        {item.images ? (
           <div className="img-box">
             <img src={item.images[0]} alt="" id="imgBody" />
           </div>
-          : ""}
+        ) : (
+          ""
+        )}
 
         <div className="tweet-reactions">
           <p>{`${item.reviewCount} reviews`}</p>
         </div>
       </div>
-
-
-
     </div>
   );
 };

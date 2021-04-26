@@ -16,6 +16,22 @@ const getFriendList = () => async (dispatch) => {
   }
 };
 
+const getUsers = () => async (dispatch) => {
+  try {
+    dispatch({ type: types.USERS_REQUEST_START, payload: null });
+    const res = await api.get("/users?page=1&limit=4");
+    console.log("get user list: ", res.data.data.users);
+
+    dispatch({
+      type: types.USERS_REQUEST_SUCCESS,
+      payload: res.data.data.users,
+    });
+  } catch (err) {
+    dispatch({ type: types.USERS_REQUEST_FAIL, payload: null });
+    console.log("Error in getFriendList", err.message);
+  }
+};
+
 const getReceiveFriendRequestList = () => async (dispatch) => {
   try {
     dispatch({
@@ -148,7 +164,7 @@ const unfriend = (friend_id) => async (dispatch) => {
       type: types.REMOVE_FRIENDREQUEST_REQUEST_START,
       payload: null,
     });
-    const res = await api.post(`/friends/${friend_id}`);
+    const res = await api.delete(`/friends/${friend_id}`);
 
     dispatch({
       type: types.REMOVE_FRIENDREQUEST_REQUEST_SUCCESS,
@@ -172,4 +188,5 @@ export const friendShipActions = {
   acceptRequest,
   declineRequest,
   unfriend,
+  getUsers,
 };
