@@ -19,7 +19,7 @@ const getFriendList = () => async (dispatch) => {
 const getUsers = () => async (dispatch) => {
   try {
     dispatch({ type: types.USERS_REQUEST_START, payload: null });
-    const res = await api.get("/users?page=1&limit=4");
+    const res = await api.get("/users?page=1&limit=10");
     console.log("get user list: ", res.data.data.users);
 
     dispatch({
