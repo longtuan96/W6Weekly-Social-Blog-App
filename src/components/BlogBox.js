@@ -32,11 +32,9 @@ const BlogBox = ({ item }) => {
             <p className="tweet-user-email">{item.author.email}</p>
           </div>
           <a
-            className="log-out"
-            href
+            className="custom-link"
             ref={target}
             onClick={() => setShowOverlay(!showOverlay)}
-            style={{ zIndex: 100 }}
           >
             <span class="material-icons">more_horiz</span>
           </a>

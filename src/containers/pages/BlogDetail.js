@@ -53,126 +53,142 @@ const BlogDetail = () => {
     dispatch(blogActions.getSingleBlog(blog_id, currentPageReviews));
   }, [currentPageReviews]);
   return (
-    <div className="main-page">
+    <div className="main-page details-page">
       {loadingSingleBlog ? (
         <h1>LOADING</h1>
       ) : (
         <div className="App-mid">
-          <button onClick={handleGoBack}>Back</button>
-          <img
-            className="tweet-img"
-            src={
-              singleBlog.author.avatarUrl
-                ? singleBlog.author.avatarUrl
-                : "profile.jpg"
-            }
-            alt="user-avatar"
-          />
-          {/* <img src={singleBlog.author.avatarUrl} alt="user avatar" /> */}
-          <div>
-            <h1>{singleBlog.author.name}</h1>
-            <p>{singleBlog.author.email}</p>
-            <h3>{singleBlog.title}</h3>
-            <p>{singleBlog.content}</p>
-            <p>
-              {moment(singleBlog.createdAt).format("h:mm a . MMM Do ,YYYY")}
-            </p>
-            {singleBlog.images.length !== 0
-              ? singleBlog.images.map((item) => (
-                  <img src={item} alt="user images" />
-                ))
-              : ""}
-            <div className="d-flex">
-              <Button
-                name="angry"
-                onClick={(e) =>
-                  dispatch(
-                    blogActions.reactionClick(
-                      "Blog",
-                      singleBlog._id,
-                      e.target.name
-                    )
-                  )
-                }
-              >
-                Angry{" "}
-                <Badge variant="light">{singleBlog.reactions.angry}</Badge>
-              </Button>
-              <Button
-                name="laugh"
-                onClick={(e) =>
-                  dispatch(
-                    blogActions.reactionClick(
-                      "Blog",
-                      singleBlog._id,
-                      e.target.name
-                    )
-                  )
-                }
-              >
-                Laugh{" "}
-                <Badge variant="light">{singleBlog.reactions.laugh}</Badge>
-              </Button>
-              <Button
-                name="like"
-                onClick={(e) =>
-                  dispatch(
-                    blogActions.reactionClick(
-                      "Blog",
-                      singleBlog._id,
-                      e.target.name
-                    )
-                  )
-                }
-              >
-                Like <Badge variant="light">{singleBlog.reactions.like}</Badge>
-              </Button>
-              <Button
-                name="love"
-                onClick={(e) =>
-                  dispatch(
-                    blogActions.reactionClick(
-                      "Blog",
-                      singleBlog._id,
-                      e.target.name
-                    )
-                  )
-                }
-              >
-                Love <Badge variant="light">{singleBlog.reactions.love}</Badge>
-              </Button>
-              <Button
-                name="sad"
-                onClick={(e) =>
-                  dispatch(
-                    blogActions.reactionClick(
-                      "Blog",
-                      singleBlog._id,
-                      e.target.name
-                    )
-                  )
-                }
-              >
-                Sad <Badge variant="light">{singleBlog.reactions.sad}</Badge>
-              </Button>
-            </div>
-            <p>{singleBlog.reviewCount} reviews</p>
-            <NewReviewBox id={singleBlog._id} />
-            <div>
-              {singleBlog.reviews.map((item) => (
-                <ReviewBox review={item} />
-              ))}
-            </div>
-            {singleBlog.reviewCount <= 10 ? (
-              ""
-            ) : (
-              <PaginationComp
-                handlePaginationClick={handlePaginationClick}
-                currentPage={currentPageReviews}
-                totalPage={totalPageReviews}
-              />
-            )}
+          <div className="page-header">
+            <a className="custom-link" onClick={handleGoBack}><span class="material-icons">
+              arrow_back
+</span></a>
+            <h5>Tweet</h5>
           </div>
+
+          <div className="tweet">
+            <img
+              className="tweet-img"
+              src={
+                singleBlog.author.avatarUrl
+                  ? singleBlog.author.avatarUrl
+                  : "profile.jpg"
+              }
+              alt="user-avatar"
+            />
+            {/* <img src={singleBlog.author.avatarUrl} alt="user avatar" /> */}
+            <div className="tweet-right">
+              <div className="tweet-header-left">
+                <h5 className="tweet-user-name">{singleBlog.author.name}</h5>
+                <p className="tweet-user-email">{singleBlog.author.email}</p>
+              </div>
+              <h3>{singleBlog.title}</h3>
+              <p className="tweet-text">{singleBlog.content}</p>
+
+              {singleBlog.images.length !== 0
+                ? singleBlog.images.map((item) => (
+                  <div className="img-box">
+                    <img src={item} alt="user images" />
+                  </div>
+                ))
+                : ""}
+              <p className="tweet-user-email">
+                {moment(singleBlog.createdAt).format("h:mm a • MMM Do, YYYY")}
+              </p>
+              <div className="d-flex reactions">
+                <Button
+                  name="angry"
+                  onClick={(e) =>
+                    dispatch(
+                      blogActions.reactionClick(
+                        "Blog",
+                        singleBlog._id,
+                        e.target.name
+                      )
+                    )
+                  }
+                >
+                  Angry{" "}
+                  <Badge variant="light">{singleBlog.reactions.angry}</Badge>
+                </Button>
+                <Button
+                  name="laugh"
+                  onClick={(e) =>
+                    dispatch(
+                      blogActions.reactionClick(
+                        "Blog",
+                        singleBlog._id,
+                        e.target.name
+                      )
+                    )
+                  }
+                >
+                  Laugh{" "}
+                  <Badge variant="light">{singleBlog.reactions.laugh}</Badge>
+                </Button>
+                <Button
+                  name="like"
+                  onClick={(e) =>
+                    dispatch(
+                      blogActions.reactionClick(
+                        "Blog",
+                        singleBlog._id,
+                        e.target.name
+                      )
+                    )
+                  }
+                >
+                  Like <Badge variant="light">{singleBlog.reactions.like}</Badge>
+                </Button>
+                <Button
+                  name="love"
+                  onClick={(e) =>
+                    dispatch(
+                      blogActions.reactionClick(
+                        "Blog",
+                        singleBlog._id,
+                        e.target.name
+                      )
+                    )
+                  }
+                >
+                  Love <Badge variant="light">{singleBlog.reactions.love}</Badge>
+                </Button>
+                <Button
+                  name="sad"
+                  onClick={(e) =>
+                    dispatch(
+                      blogActions.reactionClick(
+                        "Blog",
+                        singleBlog._id,
+                        e.target.name
+                      )
+                    )
+                  }
+                >
+                  Sad <Badge variant="light">{singleBlog.reactions.sad}</Badge>
+                </Button>
+              </div>
+              <p>{singleBlog.reviewCount} reviews</p>
+
+            </div>
+
+          </div>
+          <NewReviewBox id={singleBlog._id} />
+          <div>
+            {singleBlog.reviews.map((item) => (
+              <ReviewBox review={item} />
+            ))}
+          </div>
+          {singleBlog.reviewCount <= 10 ? (
+            ""
+          ) : (
+            <PaginationComp
+              handlePaginationClick={handlePaginationClick}
+              currentPage={currentPageReviews}
+              totalPage={totalPageReviews}
+            />
+          )}
+
         </div>
       )}
     </div>

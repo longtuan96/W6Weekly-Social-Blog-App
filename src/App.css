@@ -281,6 +281,7 @@ h6 {
   /* border: 1px solid green; */
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap !important;
 }
 
 /* Tweet form */
@@ -290,19 +291,19 @@ h6 {
   border: 1px solid hsl(206, 16%, 26%);
   border-top: none;
   display: flex;
+  padding: 0.7rem 0;
 }
 
 .tweet-left {
-  width: 6rem;
   /* border: 1px solid lightgrey; */
   text-align: center;
-  padding-top: 0.7rem;
 }
 
 .tweet-img {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
+  margin: 0 1rem;
 }
 
 .tweet-right {
@@ -310,27 +311,32 @@ h6 {
   display: flex;
   flex-direction: column;
   /* border: 1px solid lightgrey; */
-  padding: 0.6rem 0;
 }
 
 .tweet-right input {
   height: 2rem;
 }
 
-.tweet-right textarea {
+textarea {
   display: block;
-  width: 95%;
+  width: 95% !important;
   padding: 0;
   border: none;
+  border-bottom: 1px solid hsl(206, 16%, 26%);
   /* border: 1px solid lightgrey; */
   outline: none;
   font-size: 1.3rem;
+<<<<<<< HEAD
   resize: none;
+=======
+  resize:none !important;
+>>>>>>> 9d1965a23aba2bfa3391825e758cced5ca3e31aa
   overflow: auto;
   font-family: inherit;
   padding: 0.5rem;
   background: transparent;
   color: white;
+  margin-bottom: 0.5rem !important;
 }
 
 ::placeholder {
@@ -341,8 +347,7 @@ h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid hsl(206, 16%, 26%);
-  padding: 0.6rem;
+  padding: 0 0.6rem;
   padding-bottom: 0;
   width: 95%;
 }
@@ -363,7 +368,7 @@ h6 {
   border: 1px solid hsl(206, 16%, 26%);
   border-top: none;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
@@ -380,6 +385,7 @@ h6 {
   border: 1px solid hsl(206, 16%, 26%);
   border-top: none;
   display: flex;
+  padding: 0.7rem 0;
 }
 
 .tweet-header {
@@ -388,17 +394,20 @@ h6 {
   justify-content: space-between;
 }
 
-.tweet-header a {
+.custom-link {
   font-size: 1rem;
   margin-right: 1rem;
   display: flex;
   align-items: center;
   border-radius: 9999px;
-  padding: 0 0.5em;
+  padding: 0.5em 0.5em;
+  color:white;
 }
 
-.tweet-header a:hover {
+.custom-link:hover {
   background-color: #192734;
+  text-decoration: none;
+  color:hsl(203, 89%, 45%) !important;
 }
 
 .tweet-user-name {
@@ -410,6 +419,7 @@ h6 {
   font-weight: normal;
   color: #8899a6;
   font-size: 0.9rem;
+  margin-right: 1rem !important;
 }
 
 .time {
@@ -452,4 +462,17 @@ h6 {
 
 .tweet-reactions span {
   margin-right: 0.2em;
+}
+
+/* Details page */
+.review-form {
+  height: auto;
+}
+
+.reactions {
+  padding-top: 0.5rem;
+}
+
+.reactions button {
+  margin-right: 0.5rem;
 }
