@@ -300,6 +300,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 3.5rem;
   border-radius: 50%;
   margin: 0 1rem;
+  border: 1px solid hsl(206, 16%, 26%);
+  display:grid;
+  place-items: center;
 }
 
 .tweet-right {
@@ -469,4 +472,15 @@ textarea {
 
 .reactions button {
   margin-right: 0.5rem;
+}
+
+/* Profile page */
+.profile {
+  flex-direction: column;
+  padding-left: 1rem;
+}
+
+.profile-img {
+  width: 8rem;
+  height: 8rem;
 }

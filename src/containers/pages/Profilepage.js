@@ -2,6 +2,8 @@ import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import BlogBox from "../../components/BlogBox";
 import FriendCard from "../../components/FriendCard";
 import TestImgUpload from "../../components/TestImgUpload";
@@ -48,86 +50,115 @@ const Profilepage = () => {
     dispatch(friendShipActions.getSentFriendRequestList());
   }, []);
   return (
-    <div>
+    <div className="main-page">
       {loadingUser ? (
         <h1>LOADING</h1>
       ) : (
-        <div>
-          <button onClick={history.goBack}>Back</button>
-          <h3>{user.name}</h3>
-          <h5>{user.email}</h5>
-          <p>{`Joined on ${moment(user.createdAt).format("MMMM,YYYY")}`}</p>
-          <img src={user.avatarUrl} alt="" />
-          <p>{`${user.friendCount} friends`}</p>
-
-          <div id="friendsTAB">
-            {loadingFriends ? (
-              <h1>LOADING FRIEND</h1>
-            ) : (
-              <div>
-                {user.friendCount === 0 ? (
-                  <h1>{"I HAVE NO FRIEND :( "}</h1>
-                ) : (
-                  friendlist &&
-                  friendlist.map((item) => (
-                    <FriendCard friend={item} inPlace="friend" />
-                  ))
-                )}
-              </div>
-            )}
+        <div className="App-mid">
+          <div className="page-header">
+            <a className="custom-link" onClick={history.goBack}><span class="material-icons">
+              arrow_back
+</span></a>
+            <h5>Profile</h5>
+          </div>
+          <div className="tweet profile">
+            <img className="tweet-img profile-img" src={user.avatarUrl ? user.avatarUrl : "profile.jpg"} alt="user-avatar" />
+            <h3>{user.name}</h3>
+            <h5>{user.email}</h5>
+            <p>{`Joined on ${moment(user.createdAt).format("MMMM,YYYY")}`}</p>
+            <p>{`${user.friendCount} friends`}</p>
           </div>
 
-          <div id="receivedRequestTAB">
-            {loadingReceivedRequest ? (
-              <h1>LOADING REceive request</h1>
-            ) : (
-              <div>
-                {receivedFriendRequestList.length === 0 ? (
-                  <h1>{"I HAVE no incoming request !! "}</h1>
-                ) : (
-                  receivedFriendRequestList &&
-                  receivedFriendRequestList.map((item) => (
-                    <FriendCard friend={item} inPlace="received" />
-                  ))
-                )}
-              </div>
-            )}
-          </div>
 
-          <div id="sentRequestTAB">
-            {loadingSentRequest ? (
-              <h1>LOADING sent request</h1>
-            ) : (
-              <div>
-                {sentFriendRequestList.length === 0 ? (
-                  <h1>{"I HAVEnt sent any request !! "}</h1>
+          <Tabs>
+            <TabList>
+              <Tab>Tweets</Tab>
+              <Tab>Friends</Tab>
+              <Tab>Sent Requests</Tab>
+              <Tab>Received Requests</Tab>
+            </TabList>
+
+            <TabPanel>
+              <div id="posted BlogTAB">
+                {loadingBlogs ? (
+                  <h1>LOADING blogs</h1>
                 ) : (
-                  sentFriendRequestList &&
-                  sentFriendRequestList.map((item) => (
-                    <FriendCard friend={item} inPlace="sent" />
-                  ))
+                  <div>
+                    {filteredBlogs.length === 0 ? (
+                      <h1>{"I HAVEnt post any blog "}</h1>
+                    ) : (
+                      filteredBlogs &&
+                      filteredBlogs.map((item) => <BlogBox item={item} />)
+                    )}
+                  </div>
                 )}
               </div>
-            )}
-          </div>
-          <div id="posted BlogTAB">
-            {loadingBlogs ? (
-              <h1>LOADING blogs</h1>
-            ) : (
-              <div>
-                {filteredBlogs.length === 0 ? (
-                  <h1>{"I HAVEnt post any blog "}</h1>
+            </TabPanel>
+            <TabPanel>
+              <div id="friendsTAB">
+                {loadingFriends ? (
+                  <h1>LOADING FRIEND</h1>
                 ) : (
-                  filteredBlogs &&
-                  filteredBlogs.map((item) => <BlogBox item={item} />)
+                  <div>
+                    {user.friendCount === 0 ? (
+                      <h1>{"I HAVE NO FRIEND :( "}</h1>
+                    ) : (
+                      friendlist &&
+                      friendlist.map((item) => (
+                        <FriendCard friend={item} inPlace="friend" />
+                      ))
+                    )}
+                  </div>
                 )}
               </div>
-            )}
-          </div>
+            </TabPanel>
+            <TabPanel>
+              <div id="sentRequestTAB">
+                {loadingSentRequest ? (
+                  <h1>LOADING sent request</h1>
+                ) : (
+                  <div>
+                    {sentFriendRequestList.length === 0 ? (
+                      <h5>{"No requests sent"}</h5>
+                    ) : (
+                      sentFriendRequestList &&
+                      sentFriendRequestList.map((item) => (
+                        <FriendCard friend={item} inPlace="sent" />
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+            </TabPanel>
+            <TabPanel>
+              <div id="receivedRequestTAB">
+                {loadingReceivedRequest ? (
+                  <h1>LOADING REceive request</h1>
+                ) : (
+                  <div>
+                    {receivedFriendRequestList.length === 0 ? (
+                      <h5>{"No requests received"}</h5>
+                    ) : (
+                      receivedFriendRequestList &&
+                      receivedFriendRequestList.map((item) => (
+                        <FriendCard friend={item} inPlace="received" />
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+            </TabPanel>
+          </Tabs>
+
+
+
+
+
+
         </div>
       )}
 
-      <TestImgUpload />
+      {/* <TestImgUpload /> */}
     </div>
   );
 };
