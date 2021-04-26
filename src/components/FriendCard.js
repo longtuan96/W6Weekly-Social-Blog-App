@@ -6,14 +6,28 @@ import { friendShipActions } from "../redux/actions/friendship.action";
 const FriendCard = ({ friend, inPlace }) => {
   const dispatch = useDispatch();
   return (
-    <div className="friendCard">
-      <img src={friend.avatarUrl} alt="" />
-      <h3>{friend.name}</h3>
-      <h5>{friend.email}</h5>
-      <p>{`Joint on ${moment(friend.createAt).format("MMMM,YYYY")}`}</p>
-      <p>{`${friend.friendCount} Friends`}</p>
-      {friend.friendship !== null ? (
-        friend.friendship.status === "requesting" && inPlace === "sent" ? (
+    <div className="friendCard tweet">
+      <div className="tweet-left">
+        <img
+          className="tweet-img"
+          src={friend.avatarUrl ? friend.avatarUrl : "/profile.jpg"}
+          alt=""
+        />
+      </div>
+      <div className="tweet-right tweet-content">
+        <h5 className="tweet-user-name">{friend.name}</h5>
+        <p className="tweet-user-email">{friend.email}</p>
+        <p>{`Joined on ${moment(friend.createAt).format("MMMM,YYYY")}`}</p>
+        <p>{`${friend.friendCount} Friends`}</p>
+        {!friend.friendship ? (
+          <button
+            onClick={() =>
+              dispatch(friendShipActions.sendFriendRequest(friend._id))
+            }
+          >
+            Add friend
+          </button>
+        ) : friend.friendship.status === "requesting" && inPlace === "sent" ? (
           <button
             onClick={() =>
               dispatch(friendShipActions.cancelRequest(friend._id))
@@ -46,17 +60,9 @@ const FriendCard = ({ friend, inPlace }) => {
             Unfriend
           </button>
         ) : (
-          ""
-        )
-      ) : (
-        <button
-          onClick={() =>
-            dispatch(friendShipActions.sendFriendRequest(friend._id))
-          }
-        >
-          Add friend
-        </button>
-      )}
+          <button>Requesting</button>
+        )}
+      </div>
     </div>
   );
 };

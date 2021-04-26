@@ -1,8 +1,12 @@
 import moment from "moment";
 import React, { useEffect } from "react";
-import { Nav, Tabs, Tab } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import { css } from "@emotion/core";
+import BeatLoader from "react-spinners/BeatLoader";
 import BlogBox from "../../components/BlogBox";
 import FriendCard from "../../components/FriendCard";
 
@@ -53,23 +57,60 @@ const Profilepage = () => {
     dispatch(friendShipActions.getSentFriendRequestList());
   }, []);
   return (
-    <div>
+    <div className="main-page">
       {loadingUser ? (
-        <h1>LOADING</h1>
+        <BeatLoader color={"white"} />
       ) : (
-        <div>
-          <button onClick={history.goBack}>Back</button>
-          <h3>{user.name}</h3>
-          <h5>{user.email}</h5>
-          <p>{`Joined on ${moment(user.createdAt).format("MMMM,YYYY")}`}</p>
-          <img src={user.avatarUrl} alt="" />
-          <p>{`${user.friendCount} friends`}</p>
+        <div className="App-mid">
+          <div className="page-header">
+            <a className="custom-link" onClick={history.goBack}>
+              <span class="material-icons">arrow_back</span>
+            </a>
+            <h5>Profile</h5>
+          </div>
+          <div className="tweet profile">
+            <img
+              className="tweet-img profile-img"
+              src={user.avatarUrl ? user.avatarUrl : "/profile.jpg"}
+              alt="user-avatar"
+            />
+            <h3>{user.name}</h3>
+            <h5>{user.email}</h5>
+            <p>{`Joined on ${moment(user.createdAt).format("MMMM,YYYY")}`}</p>
+            <p>{`${user.friendCount} friends`}</p>
+          </div>
 
-          <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-            <Tab eventKey="friends" title="Friends">
+          <Tabs>
+            <TabList>
+              <Tab>Tweets</Tab>
+              <Tab>Friends</Tab>
+              <Tab>Sent Requests</Tab>
+              <Tab>Received Requests</Tab>
+              <Tab>Users</Tab>
+            </TabList>
+
+            <TabPanel>
+              <div id="posted BlogTAB">
+                {loadingBlogs ? (
+                  <h1>
+                    <BeatLoader color={"white"} />
+                  </h1>
+                ) : (
+                  <div>
+                    {filteredBlogs.length === 0 ? (
+                      <h1>{"I HAVEnt post any blog "}</h1>
+                    ) : (
+                      filteredBlogs &&
+                      filteredBlogs.map((item) => <BlogBox item={item} />)
+                    )}
+                  </div>
+                )}
+              </div>
+            </TabPanel>
+            <TabPanel>
               <div id="friendsTAB">
                 {loadingFriends ? (
-                  <h1>LOADING FRIEND</h1>
+                  <BeatLoader color={"white"} />
                 ) : (
                   <div>
                     {user.friendCount === 0 ? (
@@ -83,33 +124,15 @@ const Profilepage = () => {
                   </div>
                 )}
               </div>
-            </Tab>
-            <Tab eventKey="receivedRequests" title="Received Requests">
-              <div id="receivedRequestTAB">
-                {loadingReceivedRequest ? (
-                  <h1>LOADING REceive request</h1>
-                ) : (
-                  <div>
-                    {receivedFriendRequestList.length === 0 ? (
-                      <h1>{"I HAVE no incoming request !! "}</h1>
-                    ) : (
-                      receivedFriendRequestList &&
-                      receivedFriendRequestList.map((item) => (
-                        <FriendCard friend={item} inPlace="received" />
-                      ))
-                    )}
-                  </div>
-                )}
-              </div>
-            </Tab>
-            <Tab eventKey="sentRequests" title="Sent Requests">
+            </TabPanel>
+            <TabPanel>
               <div id="sentRequestTAB">
                 {loadingSentRequest ? (
-                  <h1>LOADING sent request</h1>
+                  <BeatLoader color={"white"} />
                 ) : (
                   <div>
                     {sentFriendRequestList.length === 0 ? (
-                      <h1>{"I HAVEnt sent any request !! "}</h1>
+                      <h5>{"No requests sent"}</h5>
                     ) : (
                       sentFriendRequestList &&
                       sentFriendRequestList.map((item) => (
@@ -119,44 +142,45 @@ const Profilepage = () => {
                   </div>
                 )}
               </div>
-            </Tab>
-            <Tab eventKey="postedBlog" title="Posted Blogs">
-              <div id="posted BlogTAB">
-                {loadingBlogs ? (
-                  <h1>LOADING blogs</h1>
+            </TabPanel>
+            <TabPanel>
+              <div id="receivedRequestTAB">
+                {loadingReceivedRequest ? (
+                  <BeatLoader color={"white"} />
                 ) : (
                   <div>
-                    {filteredBlogs.length === 0 ? (
-                      <h1>{"I HAVEnt post any blog "}</h1>
+                    {receivedFriendRequestList.length === 0 ? (
+                      <h5>{"No requests received"}</h5>
                     ) : (
-                      filteredBlogs &&
-                      filteredBlogs.map((item) => <BlogBox item={item} />)
-                    )}
-                  </div>
-                )}
-              </div>
-            </Tab>
-            <Tab eventKey="users" title="users">
-              <div id="userTAB">
-                {loadingUsers ? (
-                  <h1>LOADING loadingUsers request</h1>
-                ) : (
-                  <div>
-                    {users.length === 0 ? (
-                      <h1>{"I HAVE no incoming request !! "}</h1>
-                    ) : (
-                      users &&
-                      users.map((item) => (
+                      receivedFriendRequestList &&
+                      receivedFriendRequestList.map((item) => (
                         <FriendCard friend={item} inPlace="received" />
                       ))
                     )}
                   </div>
                 )}
               </div>
-            </Tab>
+            </TabPanel>
+            <TabPanel>
+              <div id="usersTAB">
+                {loadingUsers ? (
+                  <BeatLoader color={"white"} />
+                ) : (
+                  <div>
+                    {users.length === 0 ? (
+                      <h5>{"No requests received"}</h5>
+                    ) : (
+                      users && users.map((item) => <FriendCard friend={item} />)
+                    )}
+                  </div>
+                )}
+              </div>
+            </TabPanel>
           </Tabs>
         </div>
       )}
+
+      {/* <TestImgUpload /> */}
     </div>
   );
 };
