@@ -326,11 +326,7 @@ textarea {
   /* border: 1px solid lightgrey; */
   outline: none;
   font-size: 1.3rem;
-<<<<<<< HEAD
-  resize: none;
-=======
-  resize:none !important;
->>>>>>> 9d1965a23aba2bfa3391825e758cced5ca3e31aa
+  resize: none !important;
   overflow: auto;
   font-family: inherit;
   padding: 0.5rem;
@@ -401,13 +397,13 @@ textarea {
   align-items: center;
   border-radius: 9999px;
   padding: 0.5em 0.5em;
-  color:white;
+  color: white;
 }
 
 .custom-link:hover {
   background-color: #192734;
   text-decoration: none;
-  color:hsl(203, 89%, 45%) !important;
+  color: hsl(203, 89%, 45%) !important;
 }
 
 .tweet-user-name {

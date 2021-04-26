@@ -47,7 +47,7 @@ const Profilepage = () => {
   useEffect(() => {
     dispatch(userActions.getUser());
     dispatch(blogActions.getBlogs());
-    dispatch(friendShipActions.getUser());
+    dispatch(friendShipActions.getUsers());
     dispatch(friendShipActions.getFriendList());
     dispatch(friendShipActions.getReceiveFriendRequestList());
     dispatch(friendShipActions.getSentFriendRequestList());
