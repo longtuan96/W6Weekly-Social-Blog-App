@@ -16,8 +16,8 @@ const BlogBox = ({ item }) => {
     dispatch(blogActions.deleteBlog(id));
   };
   return (
-    <div className="tweet">
-      <div className="tweet-left">
+    <div className="tweet row">
+      <div className="tweet-left col-2">
         <img
           className="tweet-img"
           src={item.author.avatarUrl ? item.author.avatarUrl : "/profile.jpg"}
@@ -25,7 +25,7 @@ const BlogBox = ({ item }) => {
         />
       </div>
 
-      <div className="tweet-right tweet-content">
+      <div className="tweet-right col-10 tweet-content">
         <div className="tweet-header">
           <div className="tweet-header-left">
             <h5 className="tweet-user-name">{item.author.name}</h5>
@@ -35,6 +35,8 @@ const BlogBox = ({ item }) => {
             className="custom-link"
             ref={target}
             onClick={() => setShowOverlay(!showOverlay)}
+            href
+            style={{ zIndex: 100 }}
           >
             <span class="material-icons">more_horiz</span>
           </a>

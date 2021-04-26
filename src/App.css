@@ -385,6 +385,8 @@ textarea {
   border-top: none;
   display: flex;
   padding: 0.7rem 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .tweet-header {
@@ -444,6 +446,8 @@ textarea {
 
 .tweet-text {
   margin-bottom: 0.6rem !important;
+  width: 80%;
+  overflow: scroll;
 }
 
 .tweet-reactions {

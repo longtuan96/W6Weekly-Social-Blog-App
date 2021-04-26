@@ -25,13 +25,14 @@ const NewReviewBox = ({ id }) => {
   return (
     <div className="tweet-form review-form">
       <div className="tweet-left">
-        <img className="tweet-img" src={user.avatarUrl ? user.avatarUrl
-          : "profile.jpg"
-        } alt="user-avatar" />
+        <img
+          className="tweet-img"
+          src={user.avatarUrl ? user.avatarUrl : "/profile.jpg"}
+          alt="user-avatar"
+        />
       </div>
       <div className="tweet-right">
         <form className="" onSubmit={handleSubmit}>
-
           <textarea
             placeholder="Write your review here"
             onChange={handleChange}
@@ -40,11 +41,10 @@ const NewReviewBox = ({ id }) => {
           <div className="tweet-right-bot">
             <button className="btn-light" type="submit">
               Submit
-              </button>
+            </button>
           </div>
         </form>
       </div>
-
     </div>
   );
 };
