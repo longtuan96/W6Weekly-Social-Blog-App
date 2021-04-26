@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { css } from "@emotion/core";
+import BeatLoader from "react-spinners/BeatLoader";
 import BlogBox from "../../components/BlogBox";
 import FriendCard from "../../components/FriendCard";
 import TestImgUpload from "../../components/TestImgUpload";
@@ -52,7 +54,7 @@ const Profilepage = () => {
   return (
     <div className="main-page">
       {loadingUser ? (
-        <h1>LOADING</h1>
+        <BeatLoader color={"white"} />
       ) : (
         <div className="App-mid">
           <div className="page-header">
@@ -81,7 +83,7 @@ const Profilepage = () => {
             <TabPanel>
               <div id="posted BlogTAB">
                 {loadingBlogs ? (
-                  <h1>LOADING blogs</h1>
+                  <h1><BeatLoader color={"white"} /></h1>
                 ) : (
                   <div>
                     {filteredBlogs.length === 0 ? (
@@ -97,7 +99,7 @@ const Profilepage = () => {
             <TabPanel>
               <div id="friendsTAB">
                 {loadingFriends ? (
-                  <h1>LOADING FRIEND</h1>
+                  <BeatLoader color={"white"} />
                 ) : (
                   <div>
                     {user.friendCount === 0 ? (
@@ -115,7 +117,7 @@ const Profilepage = () => {
             <TabPanel>
               <div id="sentRequestTAB">
                 {loadingSentRequest ? (
-                  <h1>LOADING sent request</h1>
+                  <BeatLoader color={"white"} />
                 ) : (
                   <div>
                     {sentFriendRequestList.length === 0 ? (
@@ -133,7 +135,7 @@ const Profilepage = () => {
             <TabPanel>
               <div id="receivedRequestTAB">
                 {loadingReceivedRequest ? (
-                  <h1>LOADING REceive request</h1>
+                  <BeatLoader color={"white"} />
                 ) : (
                   <div>
                     {receivedFriendRequestList.length === 0 ? (
