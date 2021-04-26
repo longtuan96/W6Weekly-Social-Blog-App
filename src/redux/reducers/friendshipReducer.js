@@ -9,6 +9,7 @@ const initialState = {
   receivedFriendRequestList: [],
   sentFriendRequestList: [],
   users: [],
+  array: [],
 };
 
 const friendShipReducer = (state = initialState, action) => {
@@ -17,10 +18,12 @@ const friendShipReducer = (state = initialState, action) => {
     case types.SENT_FRIENDREQUESTLIST_REQUEST_START:
     case types.FRIENDLIST_REQUEST_START:
       state.loadingFriends = true;
+
       break;
     case types.FRIENDLIST_REQUEST_SUCCESS:
       state.loadingFriends = false;
       state.friends = payload;
+
       break;
     case types.FRIENDLIST_REQUEST_FAIL:
       state.loadingFriends = false;
@@ -69,7 +72,13 @@ const friendShipReducer = (state = initialState, action) => {
     case types.USERS_REQUEST_FAIL:
       state.loadingUsers = false;
       break;
-
+    case types.REMOVE_FRIENDREQUEST_REQUEST_SUCCESS:
+    case types.REMOVE_FRIEND_REQUEST_SUCCESS:
+    case types.SEND_FRIENDREQUEST_REQUEST_SUCCESS:
+    case types.ACCEPT_FRIENDREQUEST_REQUEST_SUCCESS:
+    case types.DENINED_FRIENDREQUEST_REQUEST_SUCCESS:
+      state.array.push(payload);
+      break;
     default:
       break;
   }

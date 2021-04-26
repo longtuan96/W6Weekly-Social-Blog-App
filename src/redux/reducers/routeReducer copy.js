@@ -1,5 +1,4 @@
 import * as types from "../constants/route.constant";
-const { REDIRECT_TO, REMOVE_REDIRECT_TO } = types;
 
 const initialState = {
   redirectTo: null,
@@ -17,7 +16,6 @@ const routeReducer = (state = initialState, action) => {
     default:
       break;
   }
-  console.log("route state:", state);
   return { ...state };
 };
 

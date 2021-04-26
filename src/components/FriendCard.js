@@ -19,7 +19,7 @@ const FriendCard = ({ friend, inPlace }) => {
         <p className="tweet-user-email">{friend.email}</p>
         <p>{`Joined on ${moment(friend.createAt).format("MMMM,YYYY")}`}</p>
         <p>{`${friend.friendCount} Friends`}</p>
-        {!friend.friendship ? (
+        {!friend.friendship || friend.friendship.status === "cancel" ? (
           <button
             onClick={() =>
               dispatch(friendShipActions.sendFriendRequest(friend._id))

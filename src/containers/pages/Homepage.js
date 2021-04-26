@@ -16,8 +16,9 @@ import api from "../../redux/api";
 const Homepage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const blogs = useSelector((state) => state.blog).blogs;
-  const newBlogs = useSelector((state) => state.blog.newBlogs);
+  const blogs = useSelector((state) => state.blog.blogs);
+  const newBlogs = useSelector((state) => state.blog);
+  const user = useSelector((state) => state.user.user);
   const currentPageBlogs = useSelector(
     (state) => state.pagination.currentPageBlogs
   );
@@ -30,7 +31,11 @@ const Homepage = () => {
   useEffect(() => {
     dispatch(blogActions.getBlogs(currentPageBlogs));
     dispatch(userActions.getUser());
-  }, [newBlogs, currentPageBlogs]);
+  }, []);
+  useEffect(() => {
+    dispatch(blogActions.getBlogs(currentPageBlogs));
+  }, [newBlogs.newBlogs.length, currentPageBlogs]);
+
   const handlePaginationClick = (direction) => {
     switch (direction) {
       case "next":
@@ -63,9 +68,7 @@ const Homepage = () => {
         <div className="spacer"></div>
         {blogs &&
           blogs.map((item, itemIndex) => (
-            <a href onClick={() => handleBlogClick(item._id)}>
-              <BlogBox key={itemIndex} item={item} />
-            </a>
+            <BlogBox key={itemIndex} item={item} />
           ))}
         <PaginationComp
           handlePaginationClick={handlePaginationClick}

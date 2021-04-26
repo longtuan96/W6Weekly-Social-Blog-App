@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 const Navbar = () => {
   const history = useHistory();
   const handleClick = (place) => {
-    history.push("/user/profile");
+    history.push(place);
   };
   return (
     <div className="navbar-top">
@@ -34,7 +34,7 @@ const Navbar = () => {
         <span className="material-icons nav-icon">speaker_notes</span>
         <span>Topics</span>
       </div>
-      <div className="nav-link" onClick={() => handleClick("profile")}>
+      <div className="nav-link" onClick={() => handleClick("/user/profile")}>
         <span className="material-icons nav-icon">person_outline</span>
         <span>Profile</span>
       </div>

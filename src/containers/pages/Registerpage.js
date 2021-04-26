@@ -18,21 +18,29 @@ const Registerpage = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      avatarUrl: "",
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("register data:", formData);
-    const { name, email, password, password2 } = formData;
+    const { name, email, password, password2, avatarUrl } = formData;
     if (password !== password2) {
       console.log("password is not match");
       return;
     } else {
-      dispatch(
-        authActions.registerUser({ name, email, password, avatarUrl: imgUrl })
-      );
+      dispatch(authActions.registerUser({ name, email, password, avatarUrl }));
     }
   };
+
+  useEffect(() => {
+    formData.avatarUrl = imgUrl;
+    console.log("Form Data:", formData);
+  }, [imgUrl]);
 
   useEffect(() => {
     if (redirectTo) {

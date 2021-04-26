@@ -10,7 +10,7 @@ const EditBox = ({ id }) => {
   const redirectTo = useSelector((state) => state.route).redirectTo;
   const [formData, setFormData] = useState({
     content: "",
-    imageUrl: "",
+    images: [],
     title: "",
   });
 
@@ -19,11 +19,11 @@ const EditBox = ({ id }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { title, content, imageUrl } = formData;
+    const { title, content, images } = formData;
     console.log(
-      `title: ${title} content: ${content} imageUrl: ${imageUrl} id:${id}`
+      `title: ${title} content: ${content} imageUrl: ${images} id:${id}`
     );
-    dispatch(blogActions.updateBlog({ title, content, imageUrl }, id));
+    dispatch(blogActions.updateBlog({ title, content, images }, id));
   };
 
   return (

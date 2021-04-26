@@ -52,6 +52,7 @@ const BlogDetail = () => {
   useEffect(() => {
     dispatch(blogActions.getSingleBlog(blog_id, currentPageReviews));
   }, [currentPageReviews]);
+
   return (
     <div className="main-page details-page">
       {loadingSingleBlog ? (
@@ -59,9 +60,9 @@ const BlogDetail = () => {
       ) : (
         <div className="App-mid">
           <div className="page-header">
-            <a className="custom-link" onClick={handleGoBack}><span class="material-icons">
-              arrow_back
-</span></a>
+            <a className="custom-link" onClick={handleGoBack}>
+              <span class="material-icons">arrow_back</span>
+            </a>
             <h5>Tweet</h5>
           </div>
 
@@ -86,10 +87,10 @@ const BlogDetail = () => {
 
               {singleBlog.images.length !== 0
                 ? singleBlog.images.map((item) => (
-                  <div className="img-box">
-                    <img src={item} alt="user images" />
-                  </div>
-                ))
+                    <div className="img-box">
+                      <img src={item} alt="user images" />
+                    </div>
+                  ))
                 : ""}
               <p className="tweet-user-email">
                 {moment(singleBlog.createdAt).format("h:mm a • MMM Do, YYYY")}
@@ -97,81 +98,96 @@ const BlogDetail = () => {
               <div className="d-flex reactions">
                 <Button
                   name="angry"
-                  onClick={(e) =>
-                    dispatch(
+                  onClick={async (e) => {
+                    await dispatch(
                       blogActions.reactionClick(
                         "Blog",
                         singleBlog._id,
                         e.target.name
                       )
-                    )
-                  }
+                    );
+                    dispatch(
+                      blogActions.getSingleBlog(blog_id, currentPageReviews)
+                    );
+                  }}
                 >
                   Angry{" "}
                   <Badge variant="light">{singleBlog.reactions.angry}</Badge>
                 </Button>
                 <Button
                   name="laugh"
-                  onClick={(e) =>
-                    dispatch(
+                  onClick={async (e) => {
+                    await dispatch(
                       blogActions.reactionClick(
                         "Blog",
                         singleBlog._id,
                         e.target.name
                       )
-                    )
-                  }
+                    );
+                    dispatch(
+                      blogActions.getSingleBlog(blog_id, currentPageReviews)
+                    );
+                  }}
                 >
                   Laugh{" "}
                   <Badge variant="light">{singleBlog.reactions.laugh}</Badge>
                 </Button>
                 <Button
                   name="like"
-                  onClick={(e) =>
-                    dispatch(
+                  onClick={async (e) => {
+                    await dispatch(
                       blogActions.reactionClick(
                         "Blog",
                         singleBlog._id,
                         e.target.name
                       )
-                    )
-                  }
+                    );
+                    dispatch(
+                      blogActions.getSingleBlog(blog_id, currentPageReviews)
+                    );
+                  }}
                 >
-                  Like <Badge variant="light">{singleBlog.reactions.like}</Badge>
+                  Like{" "}
+                  <Badge variant="light">{singleBlog.reactions.like}</Badge>
                 </Button>
                 <Button
                   name="love"
-                  onClick={(e) =>
-                    dispatch(
+                  onClick={async (e) => {
+                    await dispatch(
                       blogActions.reactionClick(
                         "Blog",
                         singleBlog._id,
                         e.target.name
                       )
-                    )
-                  }
+                    );
+                    dispatch(
+                      blogActions.getSingleBlog(blog_id, currentPageReviews)
+                    );
+                  }}
                 >
-                  Love <Badge variant="light">{singleBlog.reactions.love}</Badge>
+                  Love{" "}
+                  <Badge variant="light">{singleBlog.reactions.love}</Badge>
                 </Button>
                 <Button
                   name="sad"
-                  onClick={(e) =>
-                    dispatch(
+                  onClick={async (e) => {
+                    await dispatch(
                       blogActions.reactionClick(
                         "Blog",
                         singleBlog._id,
                         e.target.name
                       )
-                    )
-                  }
+                    );
+                    dispatch(
+                      blogActions.getSingleBlog(blog_id, currentPageReviews)
+                    );
+                  }}
                 >
                   Sad <Badge variant="light">{singleBlog.reactions.sad}</Badge>
                 </Button>
               </div>
               <p>{singleBlog.reviewCount} reviews</p>
-
             </div>
-
           </div>
           <NewReviewBox id={singleBlog._id} />
           <div>
@@ -188,7 +204,6 @@ const BlogDetail = () => {
               totalPage={totalPageReviews}
             />
           )}
-
         </div>
       )}
     </div>

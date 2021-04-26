@@ -19,7 +19,8 @@ const NewReviewBox = ({ id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { content } = formData;
-    dispatch(blogActions.newReview(id, { content }));
+    console.log(formData);
+    dispatch(blogActions.newReview(id, content));
   };
 
   return (
@@ -34,6 +35,7 @@ const NewReviewBox = ({ id }) => {
       <div className="tweet-right">
         <form className="" onSubmit={handleSubmit}>
           <textarea
+            name="content"
             placeholder="Write your review here"
             onChange={handleChange}
           />

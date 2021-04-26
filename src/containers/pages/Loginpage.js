@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { authActions } from "../../redux/actions/auth.action";
+import { routeActions } from "../../redux/actions/route.action";
 
 const Loginpage = () => {
   const history = useHistory();
@@ -25,7 +26,9 @@ const Loginpage = () => {
 
   useEffect(() => {
     if (redirectTo) {
-      history.push("/home");
+      history.push(redirectTo);
+
+      dispatch(routeActions.removeRedirectTo());
     }
   }, [redirectTo]);
 
@@ -57,9 +60,7 @@ const Loginpage = () => {
               onChange={handleChange}
             />
           </Form.Group>
-          {/* <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group> */}
+
           <button className="btn-light" type="submit">
             Log In
           </button>

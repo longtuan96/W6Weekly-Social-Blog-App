@@ -29,9 +29,10 @@ const blogReducer = (state = initialState, action) => {
       state.loadingBlogs = false;
 
       break;
+    case types.DELETEBLOGS_REQUEST_SUCCESS:
     case types.UPDATEBLOGS_REQUEST_SUCCESS:
     case types.NEWBLOGS_REQUEST_SUCCESS:
-      state.newBlogs = payload;
+      state.newBlogs.push(payload);
       state.loading = false;
 
       break;

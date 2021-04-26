@@ -10,6 +10,7 @@ const userReducer = (state = initialState, action) => {
   switch (type) {
     case types.USER_REQUEST_START:
       state.loadingUser = true;
+      state.user = {};
       break;
     case types.USER_REQUEST_SUCCESS:
       state.loadingUser = false;

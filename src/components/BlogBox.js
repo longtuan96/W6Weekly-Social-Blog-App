@@ -1,19 +1,31 @@
 import React, { useRef, useState } from "react";
-import { Media, Button, Overlay, Tooltip, Modal } from "react-bootstrap";
+import {
+  Media,
+  Button,
+  Overlay,
+  Tooltip,
+  Modal,
+  OverlayTrigger,
+  Popover,
+} from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { blogActions } from "../redux/actions/blog.action";
 import EditBox from "./EditBox";
 
 const BlogBox = ({ item }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
-
+  const history = useHistory();
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
   const [showOverlay, setShowOverlay] = useState(false);
   const target = useRef(null);
   const handleDeleteBlog = (id) => {
     dispatch(blogActions.deleteBlog(id));
+  };
+  const handleBlogClick = (id) => {
+    history.push(`/blogs/${id}`);
   };
   return (
     <div className="tweet row">
@@ -31,37 +43,31 @@ const BlogBox = ({ item }) => {
             <h5 className="tweet-user-name">{item.author.name}</h5>
             <p className="tweet-user-email">{item.author.email}</p>
           </div>
-          <a
+          {/* <a
             className="custom-link"
             ref={target}
-            onClick={() => setShowOverlay(!showOverlay)}
+            onMouseOver={() => setShowOverlay(!showOverlay)}
             href
-            style={{ zIndex: 100 }}
           >
             <span class="material-icons">more_horiz</span>
-          </a>
+          </a> */}
+          <div className="d-flex">
+            <button className="btn-dark" onClick={handleShowModal}>
+              Edit
+            </button>
+            <button
+              className="btn-dark"
+              onClick={() => handleDeleteBlog(item._id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
-
-        <Overlay target={target.current} show={showOverlay} placement="left">
-          {(props) => (
-            <Tooltip id="overlay-example" {...props}>
-              <Button variant="primary" onClick={handleShowModal}>
-                Edit
-              </Button>
-              <Modal show={showModal} onHide={handleCloseModal}>
-                <Modal.Body>
-                  <EditBox id={item._id} />
-                </Modal.Body>
-              </Modal>
-              <Button
-                variant="primary"
-                onClick={() => handleDeleteBlog(item._id)}
-              >
-                Delete
-              </Button>
-            </Tooltip>
-          )}
-        </Overlay>
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Body>
+            <EditBox id={item._id} />
+          </Modal.Body>
+        </Modal>
 
         <h5>{item.title}</h5>
         <p className="tweet-text">{item.content}</p>
@@ -76,6 +82,14 @@ const BlogBox = ({ item }) => {
 
         <div className="tweet-reactions">
           <p>{`${item.reviewCount} reviews`}</p>
+        </div>
+        <div className="text-center">
+          <button
+            className="btn-dark"
+            onClick={() => handleBlogClick(item._id)}
+          >
+            Detail
+          </button>
         </div>
       </div>
     </div>

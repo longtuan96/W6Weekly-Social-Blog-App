@@ -20,13 +20,12 @@ const TestImgUpload = ({ place }) => {
 
     const file = await res.json();
     console.log("res img:", file.secure_url);
+    setLoading(false);
     if (place === "register") {
       dispatch({ type: "UPLOAD_AVATAR", payload: file.secure_url });
     } else {
       dispatch({ type: "UPLOAD_IMG", payload: file.secure_url });
     }
-
-    setLoading(false);
   };
   return (
     <div>

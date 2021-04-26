@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import api from "../api";
 import * as types from "../constants/blog.constant";
 import { routeActions } from "./route.action";
@@ -61,10 +61,10 @@ const deleteBlog = (id) => async (dispatch) => {
     dispatch({ type: types.DELETEBLOGS_REQUEST_START, payload: null });
     const res = await api.delete(`/blogs/${id}`);
     console.log("start delete Blog!!! ");
-    dispatch(routeActions.redirect("/home"));
+
     dispatch({
       type: types.DELETEBLOGS_REQUEST_SUCCESS,
-      payload: null,
+      payload: id,
     });
     console.log("deleted Blog!!!");
   } catch (error) {

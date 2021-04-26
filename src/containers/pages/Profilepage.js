@@ -44,7 +44,7 @@ const Profilepage = () => {
   const loadingSentRequest = useSelector(
     (state) => state.friendship.loadingSentRequest
   );
-
+  const array = useSelector((state) => state.friendship);
   const loadingUsers = useSelector((state) => state.friendship.loadingUsers);
   const loadingBlogs = useSelector((state) => state.blog.loadingBlogs);
   console.log("loadingBlogs:", loadingBlogs);
@@ -55,7 +55,7 @@ const Profilepage = () => {
     dispatch(friendShipActions.getFriendList());
     dispatch(friendShipActions.getReceiveFriendRequestList());
     dispatch(friendShipActions.getSentFriendRequestList());
-  }, []);
+  }, [array.array.length]);
   return (
     <div className="main-page">
       {loadingUser ? (

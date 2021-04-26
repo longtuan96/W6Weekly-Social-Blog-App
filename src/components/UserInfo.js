@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { Popover, OverlayTrigger, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { userActions } from "../redux/actions/user.action";
 
 const UserInfo = () => {
+  const dispatch = useDispatch();
   const [isActive, setActive] = useState(false);
 
   const user = useSelector((state) => state.user.user);
@@ -15,14 +18,18 @@ const UserInfo = () => {
 
   const handleToggle = () => {
     setActive(!isActive);
-  }
-
+  };
+  useEffect(() => {
+    // dispatch(userActions.getUser());
+  }, []);
   return (
     <div className="nav-link user">
       <div className="">
-        <img className="user-img" src={user.avatarUrl ? user.avatarUrl
-          : "profile.jpg"
-        } alt="user-avatar" />
+        <img
+          className="user-img"
+          src={user.avatarUrl ? user.avatarUrl : "profile.jpg"}
+          alt="user-avatar"
+        />
       </div>
 
       <div className="user-name-email">
@@ -32,8 +39,7 @@ const UserInfo = () => {
 
       <a onClick={handleLogOut} className="log-out">
         Log Out
-        </a>
-
+      </a>
     </div>
   );
 };

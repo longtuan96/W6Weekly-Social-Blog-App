@@ -29,7 +29,7 @@ const WelcomePage = () => {
 
   useEffect(() => {
     if (redirectTo) {
-      history.push("/home");
+      history.push(redirectTo);
     }
   }, [redirectTo]);
 
@@ -41,7 +41,7 @@ const WelcomePage = () => {
         <div className="Ultility-page welcome-page row">
           <div className="Welcome-img col-5">
             <div className="overlay1" />
-            <img src="welcome.jpg" />
+            <img src="welcome.jpg" alt="a welcome pic" />
           </div>
           <div className="welcome-page-right">
             <form className="form-login" onSubmit={handleSubmit}>
@@ -63,8 +63,7 @@ const WelcomePage = () => {
 
               <button type="submit" className="btn-dark">
                 Log in
-                  </button>
-
+              </button>
             </form>
 
             <div className="welcome-page-right-bot">
@@ -76,13 +75,11 @@ const WelcomePage = () => {
                 onClick={() => handleClick("register")}
               >
                 Sign up
-                </button><br />
-              <button
-                className="btn-dark"
-                onClick={() => handleClick("login")}
-              >
+              </button>
+              <br />
+              <button className="btn-dark" onClick={() => handleClick("login")}>
                 Log In
-                </button>
+              </button>
             </div>
           </div>
         </div>
