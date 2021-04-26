@@ -21,6 +21,7 @@ const FriendCard = ({ friend, inPlace }) => {
         <p>{`${friend.friendCount} Friends`}</p>
         {!friend.friendship || friend.friendship.status === "cancel" ? (
           <button
+            className="btn-dark"
             onClick={() =>
               dispatch(friendShipActions.sendFriendRequest(friend._id))
             }
@@ -29,6 +30,7 @@ const FriendCard = ({ friend, inPlace }) => {
           </button>
         ) : friend.friendship.status === "requesting" && inPlace === "sent" ? (
           <button
+            className="btn-dark"
             onClick={() =>
               dispatch(friendShipActions.cancelRequest(friend._id))
             }
@@ -39,6 +41,7 @@ const FriendCard = ({ friend, inPlace }) => {
           inPlace === "received" ? (
           <div>
             <button
+              className="btn-dark"
               onClick={() =>
                 dispatch(friendShipActions.acceptRequest(friend._id))
               }
@@ -46,6 +49,7 @@ const FriendCard = ({ friend, inPlace }) => {
               Accept
             </button>
             <button
+              className="btn-dark"
               onClick={() =>
                 dispatch(friendShipActions.declineRequest(friend._id))
               }
@@ -55,12 +59,13 @@ const FriendCard = ({ friend, inPlace }) => {
           </div>
         ) : friend.friendship.status === "accepted" ? (
           <button
+            className="btn-dark"
             onClick={() => dispatch(friendShipActions.unfriend(friend._id))}
           >
             Unfriend
           </button>
         ) : (
-          <button>Requesting</button>
+          <button className="btn-dark">Requesting</button>
         )}
       </div>
     </div>
