@@ -20,7 +20,7 @@ const BlogBox = ({ item }) => {
       <div className="tweet-left">
         <img
           className="tweet-img"
-          src={item.author.avatarUrl ? item.author.avatarUrl : "profile.jpg"}
+          src={item.author.avatarUrl ? item.author.avatarUrl : "/profile.jpg"}
           alt="user-avatar"
         />
       </div>
