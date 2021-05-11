@@ -5,6 +5,7 @@ const initialState = {
   loadingRegister: true,
   isAuthenticated: false,
   imgUrl: "",
+  accessToken: "",
 };
 const {
   REGISTER_REQUEST_START,
@@ -35,6 +36,7 @@ const authReducer = (state = initialState, action) => {
     case LOGIN_REQUEST_SUCCESS:
       state.loadingLogIn = false;
       state.isAuthenticated = true;
+      state.accessToken = payload;
       console.log("log in success!!!");
       break;
     case LOGIN_REQUEST_FAIL:
@@ -52,3 +54,5 @@ const authReducer = (state = initialState, action) => {
 };
 
 export default authReducer;
+
+export { initialState };

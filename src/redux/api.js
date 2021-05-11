@@ -1,10 +1,14 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
+import React from "react";
+
+import { initialState } from "./reducers/authReducer";
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_API + "/api",
   headers: {
     "Content-Type": "application/json",
-    authorization: "Bearer " + localStorage.getItem("accessToken"),
+    Authorization: "Bearer " + initialState.accessToken,
   },
 });
 /**

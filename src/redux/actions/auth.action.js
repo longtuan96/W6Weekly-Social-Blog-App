@@ -29,12 +29,12 @@ const loginUser = (data) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST_START, payload: null });
     const res = await api.post("/auth/login", data);
-    dispatch(userActions.getUser());
-    localStorage.setItem("accessToken", res.data.data.accessToken);
+
+    localStorage.setItem("accessToken", res.data.accessToken);
+    api.defaults.headers["authorization"] =
+      "Bearer " + localStorage.getItem("accessToken");
     localStorage.setItem("isAuthenticated", true);
-    // localStorage.setItem("user_name", res.data.data.user.name);
-    // localStorage.setItem("user_email", res.data.data.user.email);
-    // localStorage.setItem("user_avatarUrl", res.data.data.user.avatarUrl);
+
     dispatch({ type: "USER_REQUEST_SUCCESS", payload: res.data.data.user });
     dispatch({ type: LOGIN_REQUEST_SUCCESS, payload: null });
     dispatch(routeActions.redirect("/home"));

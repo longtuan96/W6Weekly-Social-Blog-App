@@ -4,6 +4,7 @@ import { Popover, OverlayTrigger, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { userActions } from "../redux/actions/user.action";
+import api from "../redux/api";
 
 const UserInfo = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const UserInfo = () => {
   const history = useHistory();
   const handleLogOut = () => {
     localStorage.clear();
+    delete api.defaults.headers.common["authorization"];
     history.push("/");
   };
 
