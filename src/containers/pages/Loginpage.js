@@ -24,7 +24,7 @@ const Loginpage = () => {
     dispatch(authActions.loginUser({ email, password }));
   };
   const handleFacebook = (e) => {
-    dispatch(authActions.loginWithFacebook);
+    dispatch(authActions.loginWithFacebook());
   };
   useEffect(() => {
     if (redirectTo) {
