@@ -23,7 +23,9 @@ const Loginpage = () => {
     const { email, password } = formData;
     dispatch(authActions.loginUser({ email, password }));
   };
-
+  const handleFacebook = (e) => {
+    dispatch(authActions.loginWithFacebook);
+  };
   useEffect(() => {
     if (redirectTo) {
       history.push(redirectTo);
@@ -36,7 +38,7 @@ const Loginpage = () => {
     <div className="Ultility-page">
       <div className="centered-div Login-div">
         <h1>Log in to Twitter</h1>
-
+        <button onClick={handleFacebook}>facebook</button>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>

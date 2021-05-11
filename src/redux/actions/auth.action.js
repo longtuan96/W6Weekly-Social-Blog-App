@@ -43,5 +43,13 @@ const loginUser = (data) => async (dispatch) => {
     console.log("LOGIN ERROR: ", err.message);
   }
 };
+const loginWithFacebook = () => async (dispatch) => {
+  try {
+    await api.post("/auth/login/facebook");
+    console.log("facebook clicked");
+  } catch (error) {
+    console.log("facebook fail");
+  }
+};
 
-export const authActions = { registerUser, loginUser };
+export const authActions = { registerUser, loginUser, loginWithFacebook };
