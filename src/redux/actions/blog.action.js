@@ -7,14 +7,14 @@ const getBlogs = (currentPage) => async (dispatch) => {
   try {
     dispatch({ type: types.BLOGS_REQUEST_START, payload: null });
     const res = await api.get(`/blogs?page=${currentPage}&limit=10`);
-    console.log("get Blogs result: ", res.data.data.blogs);
+    console.log("get Blogs result: ", res);
     dispatch({
       type: "GET_TOTALPAGE",
-      payload: { totalPage: res.data.data.totalPages, place: "blogs" },
+      payload: { totalPage: res.data.data.totalPage, place: "blogs" },
     });
     dispatch({
       type: types.BLOGS_REQUEST_SUCCESS,
-      payload: res.data.data.blogs,
+      payload: res.data.data,
     });
   } catch (err) {
     dispatch({ type: types.BLOGS_REQUEST_FAIL, payload: null });

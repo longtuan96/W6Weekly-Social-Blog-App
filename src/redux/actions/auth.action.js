@@ -36,7 +36,7 @@ const loginUser = (data) => async (dispatch) => {
     localStorage.setItem("isAuthenticated", true);
 
     dispatch({ type: "USER_REQUEST_SUCCESS", payload: res.data.data.user });
-    dispatch({ type: LOGIN_REQUEST_SUCCESS, payload: null });
+    dispatch({ type: LOGIN_REQUEST_SUCCESS, payload: res.data.accessToken });
     dispatch(routeActions.redirect("/home"));
   } catch (err) {
     dispatch({ type: LOGIN_REQUEST_FAIL, payload: null });

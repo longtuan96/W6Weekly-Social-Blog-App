@@ -4,7 +4,6 @@ const getFriendList = () => async (dispatch) => {
   try {
     dispatch({ type: types.FRIENDLIST_REQUEST_START, payload: null });
     const res = await api.get("/friends");
-    console.log("get friends list: ", res.data.data.users);
 
     dispatch({
       type: types.FRIENDLIST_REQUEST_SUCCESS,
@@ -20,7 +19,6 @@ const getUsers = () => async (dispatch) => {
   try {
     dispatch({ type: types.USERS_REQUEST_START, payload: null });
     const res = await api.get("/users?page=1&limit=10");
-    console.log("get user list: ", res.data.data.users);
 
     dispatch({
       type: types.USERS_REQUEST_SUCCESS,
@@ -49,7 +47,6 @@ const getReceiveFriendRequestList = () => async (dispatch) => {
       type: types.RECEIVED_FRIENDREQUESTLIST_REQUEST_FAIL,
       payload: null,
     });
-    console.log("Error in getReceiveFriendRequestList", err.message);
   }
 };
 

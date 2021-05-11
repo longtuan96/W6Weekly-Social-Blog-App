@@ -4,7 +4,6 @@ const getUser = () => async (dispatch) => {
   try {
     dispatch({ type: types.USER_REQUEST_START, payload: null });
     const res = await api.get("/users/me");
-    console.log("get user info: ", res.data.data);
 
     dispatch({
       type: types.USER_REQUEST_SUCCESS,
