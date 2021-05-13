@@ -6,6 +6,7 @@ import Registerpage from "../pages/Registerpage";
 import Loginpage from "../pages/Loginpage";
 import WelcomePage from "../pages/WelcomePage";
 import ProtectedRoute from "../Routes/ProtectedRoute";
+import VerifyEmailPage from "../pages/VerifyEmailPage";
 
 const PublicLayout = () => {
   return (
@@ -16,6 +17,7 @@ const PublicLayout = () => {
         <ProtectedRoute exact path="/blogs/:blog_id" component={BlogDetail} />
         <Route exact path="/register" component={Registerpage} />
         <Route exact path="/login" component={Loginpage} />
+        <Route exact path="/verify/:token" component={VerifyEmailPage} />
       </Switch>
     </div>
   );
